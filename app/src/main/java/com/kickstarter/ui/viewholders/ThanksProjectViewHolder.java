@@ -17,10 +17,6 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 import static com.kickstarter.libs.utils.ObjectUtils.requireNonNull;
 
 public final class ThanksProjectViewHolder extends KSViewHolder {
@@ -28,10 +24,10 @@ public final class ThanksProjectViewHolder extends KSViewHolder {
   private final Context context;
   private final Delegate delegate;
 
-  protected @Bind(R.id.time_to_go_text_view) TextView timeToGoTextView;
-  protected @Bind(R.id.name) TextView nameTextView;
-  protected @Bind(R.id.photo) ImageView photoImageView;
-  protected @BindString(R.string.discovery_baseball_card_time_left_to_go) String timeLeftToGoString;
+  protected TextView timeToGoTextView;
+  protected TextView nameTextView;
+  protected ImageView photoImageView;
+  protected String timeLeftToGoString;
 
   protected @Inject KSString ksString;
 
@@ -44,7 +40,6 @@ public final class ThanksProjectViewHolder extends KSViewHolder {
     this.delegate = delegate;
     this.context = view.getContext();
     ((KSApplication) context.getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override

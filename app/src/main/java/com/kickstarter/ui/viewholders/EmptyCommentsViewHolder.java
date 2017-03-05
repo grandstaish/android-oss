@@ -11,18 +11,14 @@ import com.kickstarter.R;
 import com.kickstarter.models.Project;
 import com.kickstarter.models.User;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import static com.kickstarter.libs.utils.ObjectUtils.requireNonNull;
 
 public final class EmptyCommentsViewHolder extends KSViewHolder {
   private Project project;
   private User user;
   private final Delegate delegate;
-  protected @Bind(R.id.comments_login_button) Button commentsLoginButton;
-  protected @Bind(R.id.no_comments_message) TextView noCommentsMessageTextView;
+  protected Button commentsLoginButton;
+  protected TextView noCommentsMessageTextView;
 
   public interface Delegate {
     void emptyCommentsLoginClicked(EmptyCommentsViewHolder viewHolder);
@@ -31,7 +27,6 @@ public final class EmptyCommentsViewHolder extends KSViewHolder {
   public EmptyCommentsViewHolder(final @NonNull View view, final @NonNull Delegate delegate) {
     super(view);
     this.delegate = delegate;
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -56,7 +51,6 @@ public final class EmptyCommentsViewHolder extends KSViewHolder {
   }
 
   @Nullable
-  @OnClick(R.id.comments_login_button)
   public void emptyCommentsLogin() {
     delegate.emptyCommentsLoginClicked(this);
   }

@@ -16,28 +16,23 @@ import com.kickstarter.models.Photo;
 import com.kickstarter.models.Project;
 import com.squareup.picasso.Picasso;
 
-import butterknife.Bind;
-import butterknife.BindDrawable;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 public final class ProfileCardViewHolder extends KSViewHolder {
   private final Delegate delegate;
   private Project project;
 
-  protected @Bind(R.id.funding_unsuccessful_text_view) TextView fundingUnsuccessfulTextView;
-  protected @Bind(R.id.percentage_funded) ProgressBar percentageFundedProgressBar;
-  protected @Bind(R.id.profile_card_image) ImageView profileCardImageView;
-  protected @Bind(R.id.profile_card_name) TextView profileCardNameTextView;
-  protected @Bind(R.id.project_state_view_group) ViewGroup projectStateViewGroup;
-  protected @Bind(R.id.successfully_funded_text_view) TextView successfullyFundedTextView;
+  protected TextView fundingUnsuccessfulTextView;
+  protected ProgressBar percentageFundedProgressBar;
+  protected ImageView profileCardImageView;
+  protected TextView profileCardNameTextView;
+  protected ViewGroup projectStateViewGroup;
+  protected TextView successfullyFundedTextView;
 
-  protected @BindDrawable(R.drawable.gray_gradient) Drawable grayGradientDrawable;
+  protected Drawable grayGradientDrawable;
 
-  protected @BindString(R.string.profile_projects_status_successful) String successfulString;
-  protected @BindString(R.string.profile_projects_status_unsuccessful) String unsuccessfulString;
-  protected @BindString(R.string.profile_projects_status_canceled) String cancelledString;
-  protected @BindString(R.string.profile_projects_status_suspended) String suspendedString;
+  protected String successfulString;
+  protected String unsuccessfulString;
+  protected String cancelledString;
+  protected String suspendedString;
 
   public interface Delegate {
     void profileCardViewHolderClicked(ProfileCardViewHolder viewHolder, Project project);
@@ -46,7 +41,6 @@ public final class ProfileCardViewHolder extends KSViewHolder {
   public ProfileCardViewHolder(final @NonNull View view, final @NonNull Delegate delegate) {
     super(view);
     this.delegate = delegate;
-    ButterKnife.bind(this, view);
   }
 
   @Override

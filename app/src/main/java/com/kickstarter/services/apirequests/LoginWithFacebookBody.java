@@ -5,15 +5,11 @@ import android.support.annotation.Nullable;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class LoginWithFacebookBody implements Parcelable {
   public abstract String accessToken();
   public abstract @Nullable String code();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder accessToken(String __);
     public abstract Builder code(String __);
@@ -21,7 +17,7 @@ public abstract class LoginWithFacebookBody implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_LoginWithFacebookBody.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

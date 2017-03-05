@@ -6,10 +6,7 @@ import com.kickstarter.libs.qualifiers.AutoGson;
 import com.kickstarter.models.Project;
 import com.kickstarter.models.User;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class StarEnvelope implements Parcelable {
   public abstract User user();
   public abstract Project project();

@@ -2,10 +2,7 @@ package com.kickstarter.services.apirequests;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class SignupBody {
   public abstract String name();
   public abstract String email();
@@ -14,7 +11,6 @@ public abstract class SignupBody {
   public abstract String passwordConfirmation();
   public abstract boolean sendNewsletters();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder name(String __);
     public abstract Builder email(String __);
@@ -26,7 +22,7 @@ public abstract class SignupBody {
   }
 
   public static Builder builder() {
-    return new AutoParcel_SignupBody.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

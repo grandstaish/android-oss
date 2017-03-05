@@ -4,10 +4,7 @@ import android.os.Parcelable;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class Photo implements Parcelable {
   public abstract String ed();
   public abstract String full();
@@ -16,7 +13,6 @@ public abstract class Photo implements Parcelable {
   public abstract String small();
   public abstract String thumb();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder ed(String __);
     public abstract Builder full(String __);
@@ -28,7 +24,7 @@ public abstract class Photo implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Photo.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

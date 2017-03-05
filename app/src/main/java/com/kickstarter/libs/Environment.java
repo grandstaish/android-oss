@@ -12,10 +12,8 @@ import com.kickstarter.services.WebClientType;
 
 import java.net.CookieManager;
 
-import auto.parcel.AutoParcel;
 import rx.Scheduler;
 
-@AutoParcel
 public abstract class Environment implements Parcelable {
   public abstract IntPreferenceType activitySamplePreference();
   public abstract AndroidPayCapability androidPayCapability();
@@ -35,7 +33,6 @@ public abstract class Environment implements Parcelable {
   public abstract SharedPreferences sharedPreferences();
   public abstract WebClientType webClient();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder activitySamplePreference(IntPreferenceType __);
     public abstract Builder androidPayCapability(AndroidPayCapability __);
@@ -58,7 +55,7 @@ public abstract class Environment implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Environment.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

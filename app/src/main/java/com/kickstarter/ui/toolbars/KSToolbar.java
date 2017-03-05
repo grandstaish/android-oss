@@ -11,14 +11,11 @@ import android.widget.TextView;
 import com.kickstarter.R;
 import com.kickstarter.libs.BaseActivity;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 public class KSToolbar extends Toolbar {
-  @Nullable @Bind(R.id.title_text_view) TextView titleTextView;
+  @Nullable TextView titleTextView;
   private final CompositeSubscription subscriptions = new CompositeSubscription();
 
   public KSToolbar(final @NonNull Context context) {
@@ -33,7 +30,7 @@ public class KSToolbar extends Toolbar {
     super(context, attrs, defStyleAttr);
   }
 
-  @Nullable @OnClick(R.id.back_button)
+  @Nullable
   protected void backButtonClick() {
     ((BaseActivity) getContext()).back();
   }
@@ -51,7 +48,6 @@ public class KSToolbar extends Toolbar {
   @Override
   protected void onFinishInflate() {
     super.onFinishInflate();
-    ButterKnife.bind(this);
   }
 
   @CallSuper

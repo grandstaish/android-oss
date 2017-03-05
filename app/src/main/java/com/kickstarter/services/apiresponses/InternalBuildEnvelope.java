@@ -5,15 +5,12 @@ import android.support.annotation.Nullable;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
-@AutoGson @AutoParcel
+@AutoGson
 public abstract class InternalBuildEnvelope implements Parcelable {
   public abstract @Nullable Integer build();
   public abstract @Nullable String changelog();
   public abstract boolean newerBuildAvailable();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder build(Integer __);
     public abstract Builder changelog(String __);
@@ -22,7 +19,7 @@ public abstract class InternalBuildEnvelope implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_InternalBuildEnvelope.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

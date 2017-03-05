@@ -7,15 +7,11 @@ import com.kickstarter.libs.qualifiers.AutoGson;
 
 import java.util.List;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class Config implements Parcelable {
   public abstract String countryCode();
   public abstract List<LaunchedCountry> launchedCountries();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder countryCode(String __);
     public abstract Builder launchedCountries(List<LaunchedCountry> __);
@@ -23,14 +19,12 @@ public abstract class Config implements Parcelable {
   }
 
   @AutoGson
-  @AutoParcel
   public abstract static class LaunchedCountry implements Parcelable {
     public abstract String name();
     public abstract String currencyCode();
     public abstract String currencySymbol();
     public abstract Boolean trailingCode();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder name(String __);
       public abstract Builder currencyCode(String __);
@@ -40,14 +34,14 @@ public abstract class Config implements Parcelable {
     }
 
     public static Builder builder() {
-      return new AutoParcel_Config_LaunchedCountry.Builder();
+      return null;
     }
 
     public abstract Builder toBuilder();
   }
 
   public static Builder builder() {
-    return new AutoParcel_Config.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

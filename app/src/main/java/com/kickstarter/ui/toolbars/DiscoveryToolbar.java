@@ -25,17 +25,14 @@ import com.kickstarter.ui.activities.SearchActivity;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Observable;
 
 public final class DiscoveryToolbar extends KSToolbar {
-  @Bind(R.id.activity_feed_button) TextView activityFeedButton;
-  @Bind(R.id.filter_text_view) TextView filterTextView;
-  @Bind(R.id.discovery_status_bar) View discoveryStatusBar;
-  @Bind(R.id.menu_button) TextView menuButton;
-  @Bind(R.id.search_button) TextView searchButton;
+  TextView activityFeedButton;
+  TextView filterTextView;
+  View discoveryStatusBar;
+  TextView menuButton;
+  TextView searchButton;
   @Inject CurrentUserType currentUser;
   @Inject KSString ksString;
   @Inject Logout logout;
@@ -60,7 +57,6 @@ public final class DiscoveryToolbar extends KSToolbar {
       return;
     }
 
-    ButterKnife.bind(this);
     ((KSApplication) getContext().getApplicationContext()).component().inject(this);
 
     activityFeedButton.setOnClickListener(v -> {
@@ -69,7 +65,6 @@ public final class DiscoveryToolbar extends KSToolbar {
     });
   }
 
-  @OnClick({R.id.menu_button, R.id.filter_text_view})
   protected void menuButtonClick() {
     final DiscoveryActivity activity = (DiscoveryActivity) getContext();
     activity.discoveryLayout().openDrawer(GravityCompat.START);
@@ -101,7 +96,6 @@ public final class DiscoveryToolbar extends KSToolbar {
     views.subscribe(view -> view.setTextColor(overlayTextColor));
   }
 
-  @OnClick(R.id.search_button)
   public void searchButtonClick(final @NonNull View view) {
     final Context context = getContext();
     context.startActivity(new Intent(context, SearchActivity.class));

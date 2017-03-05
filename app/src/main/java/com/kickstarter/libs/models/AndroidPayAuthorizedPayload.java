@@ -6,19 +6,15 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 /**
  * A value that represents a fully authorized Android Pay transaction. It is sent back to our server to be processed
  * and saved as a stored card.
  */
 @AutoGson
-@AutoParcel
 public abstract class AndroidPayAuthorizedPayload implements Parcelable {
   public abstract @NonNull AndroidPayWallet androidPayWallet();
   public abstract @NonNull StripeToken stripeToken();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder androidPayWallet(AndroidPayWallet __);
     public abstract Builder stripeToken(StripeToken __);
@@ -26,14 +22,13 @@ public abstract class AndroidPayAuthorizedPayload implements Parcelable {
   }
   public abstract Builder toBuilder();
   public static Builder builder() {
-    return new AutoParcel_AndroidPayAuthorizedPayload.Builder();
+    return null;
   }
 
   /**
    * A value that represents the parts of the authorized transaction that correspond specifically to an
    * Android Pay wallet.
    */
-  @AutoParcel
   @AutoGson
   public abstract static class AndroidPayWallet implements Parcelable {
     public abstract @NonNull String googleTransactionId();
@@ -46,7 +41,6 @@ public abstract class AndroidPayAuthorizedPayload implements Parcelable {
      */
     public abstract @NonNull String instrumentType();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder googleTransactionId(String __);
       public abstract Builder instrumentDetails(String __);
@@ -55,7 +49,7 @@ public abstract class AndroidPayAuthorizedPayload implements Parcelable {
     }
     public abstract Builder toBuilder();
     public static Builder builder() {
-      return new AutoParcel_AndroidPayAuthorizedPayload_AndroidPayWallet.Builder();
+      return null;
     }
   }
 
@@ -63,19 +57,17 @@ public abstract class AndroidPayAuthorizedPayload implements Parcelable {
    * A value that represents the parts of the authorized transaction that correspond specifically to an
    * Stripe token.
    */
-  @AutoParcel
   @AutoGson
   public abstract static class StripeToken implements Parcelable {
     public abstract String id();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder id(String __);
       public abstract StripeToken build();
     }
     public abstract Builder toBuilder();
     public static Builder builder() {
-      return new AutoParcel_AndroidPayAuthorizedPayload_StripeToken.Builder();
+      return null;
     }
   }
 

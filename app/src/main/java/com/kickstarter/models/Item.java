@@ -5,9 +5,6 @@ import android.support.annotation.Nullable;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
-@AutoParcel
 @AutoGson
 public abstract class Item implements Parcelable {
   public abstract float amount();
@@ -17,7 +14,6 @@ public abstract class Item implements Parcelable {
   public abstract long projectId();
   public abstract @Nullable Boolean taxable();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder amount(float __);
     public abstract Builder description(String __);
@@ -29,7 +25,7 @@ public abstract class Item implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Item.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

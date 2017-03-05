@@ -9,10 +9,7 @@ import com.kickstarter.libs.qualifiers.AutoGson;
 
 import org.joda.time.DateTime;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class Update implements Parcelable {
   public abstract @Nullable String body();
   public abstract @Nullable Integer commentsCount();
@@ -28,7 +25,6 @@ public abstract class Update implements Parcelable {
   public abstract @Nullable User user();
   public abstract @Nullable Boolean visible();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder body(String __);
     public abstract Builder commentsCount(Integer __);
@@ -47,18 +43,16 @@ public abstract class Update implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Update.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();
 
-  @AutoParcel
   @AutoGson
   public abstract static class Urls implements Parcelable {
     public abstract Web web();
     public abstract @Nullable Api api();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder web(Web __);
       public abstract Builder api(Api __);
@@ -66,18 +60,16 @@ public abstract class Update implements Parcelable {
     }
 
     public static Builder builder() {
-      return new AutoParcel_Update_Urls.Builder();
+      return null;
     }
 
     public abstract Builder toBuilder();
 
-    @AutoParcel
     @AutoGson
     public abstract static class Web implements Parcelable {
       public abstract @Nullable String likes();
       public abstract String update();
 
-      @AutoParcel.Builder
       public abstract static class Builder {
         public abstract Builder likes(String __);
         public abstract Builder update(String __);
@@ -85,19 +77,17 @@ public abstract class Update implements Parcelable {
       }
 
       public static Builder builder() {
-        return new AutoParcel_Update_Urls_Web.Builder();
+        return null;
       }
 
       public abstract Builder toBuilder();
     }
 
-    @AutoParcel
     @AutoGson
     public abstract static class Api implements Parcelable {
       public abstract @Nullable String comments();
       public abstract @Nullable String update();
 
-      @AutoParcel.Builder
       public abstract static class Builder {
         public abstract Builder comments(String __);
         public abstract Builder update(String __);
@@ -105,7 +95,7 @@ public abstract class Update implements Parcelable {
       }
 
       public static Builder builder() {
-        return new AutoParcel_Update_Urls_Api.Builder();
+        return null;
       }
 
       public abstract Builder toBuilder();

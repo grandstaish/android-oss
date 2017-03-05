@@ -16,9 +16,6 @@ import com.kickstarter.services.apiresponses.PushNotificationEnvelope;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public final class DebugPushNotificationsView extends ScrollView {
   protected @Inject DeviceRegistrarType deviceRegistrar;
   protected @Inject PushNotifications pushNotifications;
@@ -42,7 +39,6 @@ public final class DebugPushNotificationsView extends ScrollView {
   @Override
   protected void onFinishInflate() {
     super.onFinishInflate();
-    ButterKnife.bind(this);
 
     if (isInEditMode()) {
       return;
@@ -51,17 +47,14 @@ public final class DebugPushNotificationsView extends ScrollView {
     ((KSApplication) getContext().getApplicationContext()).component().inject(this);
   }
 
-  @OnClick(R.id.register_device_button)
   public void registerDeviceButtonClick() {
     deviceRegistrar.registerDevice();
   }
 
-  @OnClick(R.id.unregister_device_button)
   public void unregisterDeviceButtonClick() {
     deviceRegistrar.unregisterDevice();
   }
 
-  @OnClick(R.id.simulate_friend_backing_button)
   public void simulateFriendBackingButtonClick() {
     final GCM gcm = GCM.builder()
       .title("Check it out")
@@ -79,7 +72,6 @@ public final class DebugPushNotificationsView extends ScrollView {
     pushNotifications.add(envelope);
   }
 
-  @OnClick(R.id.simulate_friend_follow_button)
   public void simulateFriendFollowButtonClick() {
     final GCM gcm = GCM.builder()
       .title("You're in good company")
@@ -96,7 +88,6 @@ public final class DebugPushNotificationsView extends ScrollView {
     pushNotifications.add(envelope);
   }
 
-  @OnClick(R.id.simulate_project_cancellation_button)
   public void simulateProjectCancellationButtonClick() {
     final GCM gcm = GCM.builder()
       .title("Kickstarter")
@@ -114,7 +105,6 @@ public final class DebugPushNotificationsView extends ScrollView {
     pushNotifications.add(envelope);
   }
 
-  @OnClick(R.id.simulate_project_failure_button)
   public void simulateProjectFailureButtonClick() {
     final GCM gcm = GCM.builder()
       .title("Kickstarter")
@@ -132,7 +122,6 @@ public final class DebugPushNotificationsView extends ScrollView {
     pushNotifications.add(envelope);
   }
 
-  @OnClick(R.id.simulate_project_launch_button)
   public void simulateProjectLaunchButtonClick() {
     final GCM gcm = GCM.builder()
       .title("Want to be the first backer?")
@@ -149,7 +138,6 @@ public final class DebugPushNotificationsView extends ScrollView {
     pushNotifications.add(envelope);
   }
 
-  @OnClick(R.id.simulate_project_reminder_button)
   public void simulateProjectReminderButtonClick() {
     final GCM gcm = GCM.builder()
       .title("Last call")
@@ -163,12 +151,10 @@ public final class DebugPushNotificationsView extends ScrollView {
     pushNotifications.add(envelope);
   }
 
-  @OnClick(R.id.simulate_project_success_button)
   public void simulateProjectSuccessButtonClick() {
     pushNotifications.add(projectSuccessEnvelope());
   }
 
-  @OnClick(R.id.simulate_project_update_button)
   public void simulateProjectUpdateButtonClick() {
     final GCM gcm = GCM.builder()
       .title("News from Taylor Moore")
@@ -187,7 +173,6 @@ public final class DebugPushNotificationsView extends ScrollView {
     pushNotifications.add(envelope);
   }
 
-  @OnClick(R.id.simulate_burst_button)
   public void simulateBurstClick() {
     final PushNotificationEnvelope baseEnvelope = projectSuccessEnvelope();
     for (int i = 0; i < 100; i++) {

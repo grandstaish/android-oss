@@ -9,15 +9,11 @@ import com.kickstarter.models.User;
 
 import java.util.List;
 
-import auto.parcel.AutoParcel;
-
-@AutoParcel
 public abstract class CommentsData {
   public abstract @NonNull Project project();
   public abstract @Nullable List<Comment> comments();
   public abstract @Nullable User user();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder project(Project __);
     public abstract Builder comments(List<Comment> __);
@@ -26,7 +22,7 @@ public abstract class CommentsData {
   }
 
   public static Builder builder() {
-    return new AutoParcel_CommentsData.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

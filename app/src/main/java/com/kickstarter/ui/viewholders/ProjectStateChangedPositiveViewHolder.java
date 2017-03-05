@@ -22,32 +22,26 @@ import org.joda.time.DateTime;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import static com.kickstarter.libs.utils.ObjectUtils.coalesce;
 
 public final class ProjectStateChangedPositiveViewHolder extends ActivityListViewHolder {
-  protected @Bind(R.id.card_view) CardView cardView;
-  protected @Bind(R.id.left_stat_first) TextView leftStatFirstTextView;
-  protected @Bind(R.id.left_stat_second) TextView leftStatSecondTextView;
-  protected @Bind(R.id.project_photo) ImageView projectPhotoImageView;
-  protected @Bind(R.id.right_stat_first) TextView rightStatFirstTextView;
-  protected @Bind(R.id.right_stat_second) TextView rightStatSecondTextView;
-  protected @Bind(R.id.title) TextView titleTextView;
+  protected CardView cardView;
+  protected TextView leftStatFirstTextView;
+  protected TextView leftStatSecondTextView;
+  protected ImageView projectPhotoImageView;
+  protected TextView rightStatFirstTextView;
+  protected TextView rightStatSecondTextView;
+  protected TextView titleTextView;
 
-  protected @BindColor(R.color.blue_darken_10) int blueDarken10Color;
-  protected @BindColor(R.color.green_darken_10) int greenDarken10Color;
+  protected int blueDarken10Color;
+  protected int greenDarken10Color;
 
-  protected @BindString(R.string.activity_project_state_change_creator_launched_a_project) String creatorLaunchedProjectString;
-  protected @BindString(R.string.activity_project_state_change_goal) String goalString;
-  protected @BindString(R.string.activity_project_state_change_launched) String launchedString;
-  protected @BindString(R.string.activity_project_state_change_pledged_of_goal) String pledgedOfGoalString;
-  protected @BindString(R.string.project_status_funded) String fundedString;
-  protected @BindString(R.string.activity_project_state_change_project_was_successfully_funded) String projectSuccessfullyFundedString;
+  protected String creatorLaunchedProjectString;
+  protected String goalString;
+  protected String launchedString;
+  protected String pledgedOfGoalString;
+  protected String fundedString;
+  protected String projectSuccessfullyFundedString;
 
   @Inject KSCurrency ksCurrency;
   @Inject KSString ksString;
@@ -61,7 +55,6 @@ public final class ProjectStateChangedPositiveViewHolder extends ActivityListVie
   public ProjectStateChangedPositiveViewHolder(final @NonNull View view, final @NonNull Delegate delegate) {
     super(view);
     this.delegate = delegate;
-    ButterKnife.bind(this, view);
     ((KSApplication) view.getContext().getApplicationContext()).component().inject(this);
   }
 
@@ -130,7 +123,6 @@ public final class ProjectStateChangedPositiveViewHolder extends ActivityListVie
       .into(projectPhotoImageView);
   }
 
-  @OnClick(R.id.card_view)
   public void onClick() {
     delegate.projectStateChangedPositiveClicked(this, activity());
   }

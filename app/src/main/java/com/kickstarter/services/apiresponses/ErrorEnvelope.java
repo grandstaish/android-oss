@@ -13,10 +13,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class ErrorEnvelope implements Parcelable {
   public abstract @Nullable List<String> errorMessages();
   public abstract int httpCode();
@@ -24,13 +21,11 @@ public abstract class ErrorEnvelope implements Parcelable {
   public abstract @Nullable FacebookUser facebookUser();
 
   @AutoGson
-  @AutoParcel
   public static abstract class FacebookUser implements Parcelable {
     public abstract long id();
     public abstract String name();
     public abstract String email();
 
-    @AutoParcel.Builder
     public static abstract class Builder {
       public abstract Builder id(long __);
       public abstract Builder name(String __);
@@ -39,13 +34,12 @@ public abstract class ErrorEnvelope implements Parcelable {
     }
 
     public static Builder builder() {
-      return new AutoParcel_ErrorEnvelope_FacebookUser.Builder();
+      return null;
     }
 
     public abstract Builder toBuilder();
   }
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder errorMessages(List<String> __);
     public abstract Builder httpCode(int __);
@@ -55,7 +49,7 @@ public abstract class ErrorEnvelope implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_ErrorEnvelope.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

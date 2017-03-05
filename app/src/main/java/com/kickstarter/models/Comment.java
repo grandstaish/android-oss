@@ -6,10 +6,7 @@ import com.kickstarter.libs.qualifiers.AutoGson;
 
 import org.joda.time.DateTime;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class Comment implements Parcelable {
   public abstract User author();
   public abstract String body();
@@ -17,7 +14,6 @@ public abstract class Comment implements Parcelable {
   public abstract DateTime deletedAt();
   public abstract long id();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder author(User __);
     public abstract Builder body(String __);
@@ -28,7 +24,7 @@ public abstract class Comment implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Comment.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

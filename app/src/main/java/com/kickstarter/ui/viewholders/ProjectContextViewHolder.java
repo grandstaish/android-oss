@@ -17,19 +17,15 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 public final class ProjectContextViewHolder extends KSViewHolder {
   private Project project;
   private Context context;
   private final Delegate delegate;
 
-  protected @Bind(R.id.project_context_image_view) ImageView projectContextImageView;
-  protected @Bind(R.id.project_context_project_name) TextView projectNameTextView;
-  protected @Bind(R.id.project_context_creator_name) TextView creatorNameTextView;
-  protected @BindString(R.string.project_creator_by_creator) String projectCreatorByCreatorString;
+  protected ImageView projectContextImageView;
+  protected TextView projectNameTextView;
+  protected TextView creatorNameTextView;
+  protected String projectCreatorByCreatorString;
 
   protected @Inject KSString ksString;
 
@@ -41,7 +37,6 @@ public final class ProjectContextViewHolder extends KSViewHolder {
     super(view);
     this.delegate = delegate;
     this.context = view.getContext();
-    ButterKnife.bind(this, view);
     ((KSApplication) context.getApplicationContext()).component().inject(this);
   }
 

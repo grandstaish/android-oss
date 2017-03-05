@@ -10,10 +10,7 @@ import com.kickstarter.models.pushdata.GCM;
 import java.util.Arrays;
 import java.util.List;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class PushNotificationEnvelope implements Parcelable {
   public abstract @Nullable Activity activity();
   public abstract GCM gcm();
@@ -26,7 +23,6 @@ public abstract class PushNotificationEnvelope implements Parcelable {
     com.kickstarter.models.Activity.CATEGORY_LAUNCH,
     com.kickstarter.models.Activity.CATEGORY_SUCCESS);
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder activity(Activity __);
     public abstract Builder gcm(GCM __);
@@ -35,7 +31,7 @@ public abstract class PushNotificationEnvelope implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_PushNotificationEnvelope.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();
@@ -69,12 +65,10 @@ public abstract class PushNotificationEnvelope implements Parcelable {
   }
 
   @AutoGson
-  @AutoParcel
   public abstract static class Project implements Parcelable {
     public abstract Long id();
     public abstract String photo();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder id(Long __);
       public abstract Builder photo(String __);
@@ -82,12 +76,11 @@ public abstract class PushNotificationEnvelope implements Parcelable {
     }
 
     public static Builder builder() {
-      return new AutoParcel_PushNotificationEnvelope_Project.Builder();
+      return null;
     }
   }
 
   @AutoGson
-  @AutoParcel
   public abstract static class ActivityPushData implements Parcelable {
     public abstract Long id();
     public abstract String category();

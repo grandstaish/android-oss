@@ -12,15 +12,12 @@ import com.kickstarter.R;
 import com.kickstarter.ui.activities.SearchActivity;
 import com.kickstarter.ui.views.IconButton;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 
 public final class SearchToolbar extends KSToolbar {
-  public @Bind(R.id.clear_button) IconButton clearButton;
-  public @Bind(R.id.search_edit_text) EditText searchEditText;
+  public IconButton clearButton;
+  public EditText searchEditText;
 
   public SearchToolbar(final @NonNull Context context) {
     super(context);
@@ -41,8 +38,6 @@ public final class SearchToolbar extends KSToolbar {
     if (isInEditMode()) {
       return;
     }
-
-    ButterKnife.bind(this);
   }
 
   @Override
@@ -61,7 +56,6 @@ public final class SearchToolbar extends KSToolbar {
       .subscribe(t -> ((SearchActivity) getContext()).viewModel().inputs.search(t.toString())));
   }
 
-  @OnClick(R.id.clear_button)
   public void clearButtonClick() {
     searchEditText.setText(null);
   }

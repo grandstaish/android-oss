@@ -44,10 +44,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -58,23 +54,23 @@ import static com.kickstarter.libs.rx.transformers.Transformers.ignoreValues;
 public final class ThanksActivity extends BaseActivity<ThanksViewModel> {
   protected @Inject KSString ksString;
 
-  protected @Bind(R.id.backed_project) TextView backedProjectTextView;
-  protected @Bind(R.id.recommended_projects_recycler_view) RecyclerView recommendedProjectsRecyclerView;
-  protected @Bind(R.id.share_button) Button shareButton;
-  protected @Bind(R.id.share_on_facebook_button) Button shareOnFacebookButton;
-  protected @Bind(R.id.share_on_twitter_button) Button shareOnTwitterButton;
-  protected @Bind(R.id.woohoo_background) ImageView woohooBackgroundImageView;
+  protected TextView backedProjectTextView;
+  protected RecyclerView recommendedProjectsRecyclerView;
+  protected Button shareButton;
+  protected Button shareOnFacebookButton;
+  protected Button shareOnTwitterButton;
+  protected ImageView woohooBackgroundImageView;
 
-  protected @BindString(R.string.project_checkout_share_twitter_I_just_backed_project_on_kickstarter) String iJustBackedString;
-  protected @BindString(R.string.project_accessibility_button_share_label) String shareThisProjectString;
-  protected @BindString(R.string.project_checkout_games_alert_want_the_coolest_games_delivered_to_your_inbox) String gamesAlertMessage;
-  protected @BindString(R.string.project_checkout_games_alert_no_thanks) String gamesAlertNo;
-  protected @BindString(R.string.project_checkout_games_alert_yes_please) String gamesAlertYes;
-  protected @BindString(R.string.general_alert_buttons_ok) String okString;
-  protected @BindString(R.string.profile_settings_newsletter_games) String newsletterGamesString;
-  protected @BindString(R.string.profile_settings_newsletter_opt_in_message) String optInMessageString;
-  protected @BindString(R.string.profile_settings_newsletter_opt_in_title) String optInTitleString;
-  protected @BindString(R.string.project_checkout_share_you_just_backed_project_share_this_project_html) String youJustBackedString;
+  protected String iJustBackedString;
+  protected String shareThisProjectString;
+  protected String gamesAlertMessage;
+  protected String gamesAlertNo;
+  protected String gamesAlertYes;
+  protected String okString;
+  protected String newsletterGamesString;
+  protected String optInMessageString;
+  protected String optInTitleString;
+  protected String youJustBackedString;
 
   private ThanksAdapter adapter;
   private ShareDialog shareDialog;
@@ -83,7 +79,6 @@ public final class ThanksActivity extends BaseActivity<ThanksViewModel> {
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.thanks_layout);
-    ButterKnife.bind(this);
     ((KSApplication) getApplication()).component().inject(this);
 
     shareDialog = new ShareDialog(this);
@@ -177,7 +172,6 @@ public final class ThanksActivity extends BaseActivity<ThanksViewModel> {
     recommendedProjectsRecyclerView.setAdapter(null);
   }
 
-  @OnClick(R.id.close_button)
   protected void closeButtonClick() {
     ApplicationUtils.resumeDiscoveryActivity(this);
   }

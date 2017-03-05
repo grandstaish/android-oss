@@ -10,9 +10,6 @@ import com.kickstarter.services.DiscoveryParams;
 
 import java.util.List;
 
-import auto.parcel.AutoParcel;
-
-@AutoParcel
 public abstract class NavigationDrawerData {
   public abstract @Nullable User user();
   public abstract List<Section> sections();
@@ -20,7 +17,6 @@ public abstract class NavigationDrawerData {
   public abstract @Nullable Category expandedCategory();
   public abstract @Nullable DiscoveryParams selectedParams();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder user(User __);
     public abstract Builder sections(List<Section> __);
@@ -29,21 +25,15 @@ public abstract class NavigationDrawerData {
     public abstract NavigationDrawerData build();
   }
   public static Builder builder() {
-    return new AutoParcel_NavigationDrawerData.Builder()
-      .user(null)
-      .expandedCategory(null)
-      .selectedParams(null)
-      .sections(ListUtils.empty());
+    return null;
   }
   public abstract Builder toBuilder();
 
-  @AutoParcel
   static public abstract class Section {
     public abstract boolean expandable();
     public abstract boolean expanded();
     public abstract List<Section.Row> rows();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Section.Builder expandable(boolean __);
       public abstract Section.Builder expanded(boolean __);
@@ -52,10 +42,7 @@ public abstract class NavigationDrawerData {
     }
 
     public static Section.Builder builder() {
-      return new AutoParcel_NavigationDrawerData_Section.Builder()
-        .expandable(false)
-        .expanded(false)
-        .rows(ListUtils.empty());
+      return null;
     }
     public abstract Section.Builder toBuilder();
 
@@ -67,13 +54,11 @@ public abstract class NavigationDrawerData {
       return !isCategoryFilter();
     }
 
-    @AutoParcel
     static public abstract class Row {
       public abstract @NonNull DiscoveryParams params();
       public abstract boolean selected();
       public abstract boolean rootIsExpanded();
 
-      @AutoParcel.Builder
       public static abstract class Builder {
         public abstract Builder params(DiscoveryParams __);
         public abstract Builder selected(boolean __);
@@ -81,10 +66,7 @@ public abstract class NavigationDrawerData {
         public abstract Section.Row build();
       }
       public static Builder builder() {
-        return new AutoParcel_NavigationDrawerData_Section_Row.Builder()
-          .params(DiscoveryParams.builder().build())
-          .selected(false)
-          .rootIsExpanded(false);
+        return null;
       }
       public abstract Section.Row.Builder toBuilder();
     }

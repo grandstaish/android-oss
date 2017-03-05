@@ -2,10 +2,7 @@ package com.kickstarter.services.apirequests;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class SettingsBody {
   public abstract boolean notifyMobileOfFollower();
   public abstract boolean notifyMobileOfFriendActivity();
@@ -18,7 +15,6 @@ public abstract class SettingsBody {
   public abstract int promoNewsletter();
   public abstract int weeklyNewsletter();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder notifyMobileOfFollower(boolean __);
     public abstract Builder notifyMobileOfFriendActivity(boolean __);
@@ -34,7 +30,7 @@ public abstract class SettingsBody {
   }
 
   public static Builder builder() {
-    return new AutoParcel_SettingsBody.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

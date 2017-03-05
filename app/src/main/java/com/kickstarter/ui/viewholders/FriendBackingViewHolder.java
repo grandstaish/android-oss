@@ -20,19 +20,14 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public final class FriendBackingViewHolder extends ActivityListViewHolder {
-  protected @Bind(R.id.avatar) ImageView avatarImageView;
-  protected @Bind(R.id.creator_name) TextView creatorNameTextView;
-  protected @Bind(R.id.project_name) TextView projectNameTextView;
-  protected @Bind(R.id.project_photo) ImageView projectPhotoImageView;
-  protected @Bind(R.id.title) TextView titleTextView;
+  protected ImageView avatarImageView;
+  protected TextView creatorNameTextView;
+  protected TextView projectNameTextView;
+  protected ImageView projectPhotoImageView;
+  protected TextView titleTextView;
 
-  protected @BindString(R.string.project_creator_by_creator) String projectByCreatorString;
+  protected String projectByCreatorString;
 
   @Inject KSString ksString;
 
@@ -46,7 +41,6 @@ public final class FriendBackingViewHolder extends ActivityListViewHolder {
     super(view);
     this.delegate = delegate;
     ((KSApplication) view.getContext().getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -98,7 +92,6 @@ public final class FriendBackingViewHolder extends ActivityListViewHolder {
     ));
   }
 
-  @OnClick(R.id.friend_backing_card_view)
   public void onClick() {
     delegate.friendBackingClicked(this, activity());
   }

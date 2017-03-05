@@ -8,14 +8,10 @@ import android.widget.Button;
 import com.kickstarter.R;
 import com.kickstarter.libs.utils.BooleanUtils;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public final class EmptyActivityFeedViewHolder extends KSViewHolder {
   private boolean isLoggedIn;
-  protected @Bind(R.id.discover_projects_button) Button discoverProjectsButton;
-  protected @Bind(R.id.login_button) Button loginButton;
+  protected Button discoverProjectsButton;
+  protected Button loginButton;
 
   private final Delegate delegate;
 
@@ -27,7 +23,6 @@ public final class EmptyActivityFeedViewHolder extends KSViewHolder {
   public EmptyActivityFeedViewHolder(final @NonNull View view, final @NonNull Delegate delegate) {
     super(view);
     this.delegate = delegate;
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -46,12 +41,10 @@ public final class EmptyActivityFeedViewHolder extends KSViewHolder {
     }
   }
 
-  @OnClick(R.id.discover_projects_button)
   public void discoverProjectsOnClick() {
     delegate.emptyActivityFeedDiscoverProjectsClicked(this);
   }
 
-  @OnClick(R.id.login_button)
   public void loginOnClick() {
     delegate.emptyActivityFeedLoginClicked(this);
   }

@@ -16,23 +16,19 @@ import com.kickstarter.libs.utils.ObjectUtils;
 import com.kickstarter.services.apiresponses.InternalBuildEnvelope;
 import com.kickstarter.viewmodels.DownloadBetaViewModel;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 
 @RequiresActivityViewModel(DownloadBetaViewModel.class)
 public final class DownloadBetaActivity extends BaseActivity<DownloadBetaViewModel> {
-  protected @Bind(R.id.build) TextView buildTextView;
-  protected @Bind(R.id.changelog) TextView changelogTextView;
+  protected TextView buildTextView;
+  protected TextView changelogTextView;
 
   @Override
   public void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.download_beta_layout);
-    ButterKnife.bind(this);
 
     final Observable<String> build = viewModel.outputs.internalBuildEnvelope()
       .map(InternalBuildEnvelope::build)
@@ -56,7 +52,6 @@ public final class DownloadBetaActivity extends BaseActivity<DownloadBetaViewMod
       .subscribe(changelogTextView::setText);
   }
 
-  @OnClick(R.id.open_downloads_button)
   public void openDownloadsOnClick(final @NonNull View v) {
     final Intent intent = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
     startActivity(intent);

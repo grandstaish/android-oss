@@ -23,41 +23,37 @@ import com.kickstarter.ui.adapters.RewardsItemAdapter;
 import com.kickstarter.viewmodels.ViewPledgeViewModel;
 import com.squareup.picasso.Picasso;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
 import static rx.android.schedulers.AndroidSchedulers.mainThread;
 
 @RequiresActivityViewModel(ViewPledgeViewModel.class)
 public final class ViewPledgeActivity extends BaseActivity<ViewPledgeViewModel> {
-  protected @Bind(R.id.view_pledge_avatar_image_view) ImageView avatarImageView;
-  protected @Bind(R.id.view_pledge_backer_name) TextView backerNameTextView;
-  protected @Bind(R.id.view_pledge_backer_number) TextView backerNumberTextView;
-  protected @Bind(R.id.view_pledge_backing_amount_and_date_text_view) TextView backingAmountAndDateTextView;
-  protected @Bind(R.id.view_pledge_backing_status) TextView backingStatusTextView;
-  protected @Bind(R.id.project_context_creator_name) TextView projectContextCreatorNameTextView;
-  protected @Bind(R.id.project_context_image_view) ImageView projectContextPhotoImageView;
-  protected @Bind(R.id.project_context_project_name) TextView projectContextProjectNameTextView;
-  protected @Bind(R.id.project_context_view) View projectContextView;
-  protected @Bind(R.id.view_pledge_reward_minimum_and_description) TextView rewardMinimumAndDescriptionTextView;
-  protected @Bind(R.id.view_pledge_rewards_item_recycler_view) RecyclerView rewardsItemRecyclerView;
-  protected @Bind(R.id.view_pledge_rewards_item_section) View rewardsItemSection;
-  protected @Bind(R.id.view_pledge_shipping_amount) TextView shippingAmountTextView;
-  protected @Bind(R.id.view_pledge_shipping_location) TextView shippingLocationTextView;
-  protected @Bind(R.id.view_pledge_shipping_section) View shippingSection;
+  protected ImageView avatarImageView;
+  protected TextView backerNameTextView;
+  protected TextView backerNumberTextView;
+  protected TextView backingAmountAndDateTextView;
+  protected TextView backingStatusTextView;
+  protected TextView projectContextCreatorNameTextView;
+  protected ImageView projectContextPhotoImageView;
+  protected TextView projectContextProjectNameTextView;
+  protected View projectContextView;
+  protected TextView rewardMinimumAndDescriptionTextView;
+  protected RecyclerView rewardsItemRecyclerView;
+  protected View rewardsItemSection;
+  protected TextView shippingAmountTextView;
+  protected TextView shippingLocationTextView;
+  protected View shippingSection;
 
-  protected @BindString(R.string.backer_modal_backer_number) String backerNumberString;
-  protected @BindString(R.string.backer_modal_status_backing_status) String backingStatusString;
-  protected @BindString(R.string.backer_modal_pledge_amount_on_pledge_date) String pledgeAmountPledgeDateString;
-  protected @BindString(R.string.backer_modal_reward_amount_reward_description) String rewardAmountRewardDescriptionString;
-  protected @BindString(R.string.project_creator_by_creator) String creatorNameString;
-  protected @BindString(R.string.project_view_pledge_status_canceled) String statusCanceled;
-  protected @BindString(R.string.project_view_pledge_status_collected) String statusCollected;
-  protected @BindString(R.string.project_view_pledge_status_dropped) String statusDropped;
-  protected @BindString(R.string.project_view_pledge_status_errored) String statusErrored;
-  protected @BindString(R.string.project_view_pledge_status_pledged) String statusPledged;
+  protected String backerNumberString;
+  protected String backingStatusString;
+  protected String pledgeAmountPledgeDateString;
+  protected String rewardAmountRewardDescriptionString;
+  protected String creatorNameString;
+  protected String statusCanceled;
+  protected String statusCollected;
+  protected String statusDropped;
+  protected String statusErrored;
+  protected String statusPledged;
 
   private KSString ksString;
 
@@ -65,7 +61,6 @@ public final class ViewPledgeActivity extends BaseActivity<ViewPledgeViewModel> 
   public void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.view_pledge_layout);
-    ButterKnife.bind(this);
     final RewardsItemAdapter rewardsItemAdapter = new RewardsItemAdapter();
     rewardsItemRecyclerView.setAdapter(rewardsItemAdapter);
     final LinearLayoutManager layoutManager = new LinearLayoutManager(this);

@@ -7,12 +7,8 @@ import android.widget.Button;
 
 import com.kickstarter.R;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public final class EmptyProfileViewHolder extends KSViewHolder {
-  protected @Bind(R.id.explore_projects_button) Button exploreButton;
+  protected Button exploreButton;
 
   private final Delegate delegate;
 
@@ -23,7 +19,6 @@ public final class EmptyProfileViewHolder extends KSViewHolder {
   public EmptyProfileViewHolder(final @NonNull View view, final @NonNull Delegate delegate) {
     super(view);
     this.delegate = delegate;
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -32,7 +27,6 @@ public final class EmptyProfileViewHolder extends KSViewHolder {
   @Override
   public void onBind() {}
 
-  @OnClick(R.id.explore_projects_button)
   public void exploreProjectsClicked() {
     delegate.emptyProfileViewHolderExploreProjectsClicked(this);
   }

@@ -22,24 +22,19 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class ActivitySampleProjectViewHolder extends KSViewHolder {
   @Inject KSString ksString;
 
-  protected @Bind(R.id.activity_click_area) LinearLayout activityClickArea;
-  protected @Bind(R.id.activity_image) ImageView activityImageView;
-  protected @Bind(R.id.activity_title) TextView activityTitleTextView;
-  protected @Bind(R.id.activity_subtitle) TextView activitySubtitleTextView;
-  protected @Bind(R.id.see_activity_button) Button seeActivityButton;
-  protected @BindString(R.string.activity_project_was_not_successfully_funded) String categoryFailureString;
-  protected @BindString(R.string.activity_user_name_launched_project) String categoryLaunchString;
-  protected @BindString(R.string.activity_successfully_funded) String categorySuccessString;
-  protected @BindString(R.string.activity_funding_canceled) String categoryCancellationString;
-  protected @BindString(R.string.activity_posted_update_number_title) String categoryUpdateString;
+  protected LinearLayout activityClickArea;
+  protected ImageView activityImageView;
+  protected TextView activityTitleTextView;
+  protected TextView activitySubtitleTextView;
+  protected Button seeActivityButton;
+  protected String categoryFailureString;
+  protected String categoryLaunchString;
+  protected String categorySuccessString;
+  protected String categoryCancellationString;
+  protected String categoryUpdateString;
 
   private Activity activity;
 
@@ -55,7 +50,6 @@ public class ActivitySampleProjectViewHolder extends KSViewHolder {
     this.delegate = delegate;
 
     ((KSApplication) view.getContext().getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -108,12 +102,10 @@ public class ActivitySampleProjectViewHolder extends KSViewHolder {
     }
   }
 
-  @OnClick(R.id.see_activity_button)
   protected void seeActivityOnClick() {
     delegate.activitySampleProjectViewHolderSeeActivityClicked(this);
   }
 
-  @OnClick(R.id.activity_click_area)
   protected void activityProjectOnClick() {
     if (activity.category().equals(Activity.CATEGORY_UPDATE)) {
       delegate.activitySampleProjectViewHolderUpdateClicked(this, activity);

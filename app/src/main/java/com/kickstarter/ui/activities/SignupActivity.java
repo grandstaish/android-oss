@@ -20,35 +20,29 @@ import com.kickstarter.ui.toolbars.LoginToolbar;
 import com.kickstarter.ui.views.LoginPopupMenu;
 import com.kickstarter.viewmodels.SignupViewModel;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnTextChanged;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
 
 @RequiresActivityViewModel(SignupViewModel.class)
 public final class SignupActivity extends BaseActivity<SignupViewModel> {
-  @Bind(R.id.full_name) EditText nameEditText;
-  @Bind(R.id.email) EditText emailEditText;
-  @Bind(R.id.help_button) TextView helpButton;
-  @Bind(R.id.login_toolbar) LoginToolbar loginToolbar;
-  @Bind(R.id.password) EditText passwordEditText;
-  @Bind(R.id.signup_button) Button signupButton;
-  @Bind(R.id.newsletter_switch) SwitchCompat newsletterSwitch;
-  @Bind(R.id.disclaimer) TextView disclaimerTextView;
+  EditText nameEditText;
+  EditText emailEditText;
+  TextView helpButton;
+  LoginToolbar loginToolbar;
+  EditText passwordEditText;
+  Button signupButton;
+  SwitchCompat newsletterSwitch;
+  TextView disclaimerTextView;
 
-  @BindString(R.string.signup_button) String signUpString;
-  @BindString(R.string.signup_error_title) String errorTitleString;
+  String signUpString;
+  String errorTitleString;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.signup_layout);
-    ButterKnife.bind(this);
     loginToolbar.setTitle(signUpString);
 
     viewModel.outputs.signupSuccess()
@@ -82,27 +76,22 @@ public final class SignupActivity extends BaseActivity<SignupViewModel> {
       .subscribe(__ -> viewModel.inputs.sendNewslettersClick(newsletterSwitch.isChecked()));
   }
 
-  @OnClick(R.id.disclaimer)
   public void disclaimerClick() {
     new LoginPopupMenu(this, helpButton).show();
   }
 
-  @OnTextChanged(R.id.full_name)
   void onNameTextChanged(final @NonNull CharSequence fullName) {
     viewModel.inputs.fullName(fullName.toString());
   }
 
-  @OnTextChanged(R.id.email)
   void onEmailTextChanged(final @NonNull CharSequence email) {
     viewModel.inputs.email(email.toString());
   }
 
-  @OnTextChanged(R.id.password)
   void onPasswordTextChange(final @NonNull CharSequence password) {
     viewModel.inputs.password(password.toString());
   }
 
-  @OnClick(R.id.signup_button)
   public void signupButtonOnClick() {
     viewModel.inputs.signupClick();
   }

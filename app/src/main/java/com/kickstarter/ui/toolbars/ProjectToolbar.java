@@ -8,9 +8,6 @@ import android.util.AttributeSet;
 import com.kickstarter.R;
 import com.kickstarter.libs.BaseActivity;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public final class ProjectToolbar extends KSToolbar {
   public ProjectToolbar(final @NonNull Context context) {
     super(context);
@@ -27,10 +24,8 @@ public final class ProjectToolbar extends KSToolbar {
   @Override
   protected void onFinishInflate() {
     super.onFinishInflate();
-    ButterKnife.bind(this);
   }
 
-  @OnClick(R.id.back_icon)
   public void backIconClick() {
     ((BaseActivity) getContext()).back();
   }

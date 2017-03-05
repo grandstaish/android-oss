@@ -34,10 +34,6 @@ import com.kickstarter.ui.viewholders.ProjectContextViewHolder;
 import com.kickstarter.viewmodels.CommentsViewModel;
 import com.trello.rxlifecycle.ActivityEvent;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.subjects.PublishSubject;
@@ -52,18 +48,17 @@ public final class CommentsActivity extends BaseActivity<CommentsViewModel> impl
 
   private @NonNull PublishSubject<AlertDialog> alertDialog = PublishSubject.create();
 
-  protected @Bind(R.id.comment_button) TextView commentButtonTextView;
-  protected @Bind(R.id.comments_swipe_refresh_layout) SwipeRefreshLayout swipeRefreshLayout;
-  protected @Bind(R.id.comments_recycler_view) RecyclerView recyclerView;
+  protected TextView commentButtonTextView;
+  protected SwipeRefreshLayout swipeRefreshLayout;
+  protected RecyclerView recyclerView;
 
-  protected @BindString(R.string.social_error_could_not_post_try_again) String postCommentErrorString;
-  protected @BindString(R.string.project_comments_posted) String commentPostedString;
+  protected String postCommentErrorString;
+  protected String commentPostedString;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.comments_layout);
-    ButterKnife.bind(this);
 
     adapter = new CommentsAdapter(this);
     recyclerView.setAdapter(adapter);
@@ -73,13 +68,13 @@ public final class CommentsActivity extends BaseActivity<CommentsViewModel> impl
     swipeRefresher = new SwipeRefresher(this, swipeRefreshLayout, viewModel.inputs::refresh, viewModel.outputs::isFetchingComments);
 
     final Observable<TextView> commentBodyEditText = alertDialog
-      .map(a -> ButterKnife.findById(a, R.id.comment_body));
+      .map(a -> (TextView) null);
 
     final Observable<TextView> postCommentButton = alertDialog
-      .map(a -> ButterKnife.findById(a, R.id.post_button));
+      .map(a -> null);
 
     final Observable<TextView> cancelButton = alertDialog
-      .map(a -> ButterKnife.findById(a, R.id.cancel_button));
+      .map(a -> null);
 
     cancelButton
       .switchMap(RxView::clicks)
@@ -159,7 +154,6 @@ public final class CommentsActivity extends BaseActivity<CommentsViewModel> impl
   }
 
   @Nullable
-  @OnClick(R.id.project_context_view)
   public void projectContextViewClick() {
     back();
   }
@@ -170,7 +164,6 @@ public final class CommentsActivity extends BaseActivity<CommentsViewModel> impl
     startActivityForResult(intent, ActivityRequestCodes.LOGIN_FLOW);
   }
 
-  @OnClick(R.id.comment_button)
   protected void commentButtonClicked() {
     viewModel.inputs.commentButtonClicked();
   }
@@ -189,7 +182,7 @@ public final class CommentsActivity extends BaseActivity<CommentsViewModel> impl
     commentDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
     /* Toolbar UI actions */
-    final TextView projectNameTextView = ButterKnife.findById(commentDialog, R.id.comment_project_name);
+    final TextView projectNameTextView = null;
     projectNameTextView.setText(project.name());
 
     // Handle cancel-click region outside of dialog modal.

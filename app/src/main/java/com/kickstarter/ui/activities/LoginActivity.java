@@ -26,11 +26,6 @@ import com.kickstarter.viewmodels.LoginViewModel;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnTextChanged;
 import rx.Observable;
 
 import static com.kickstarter.libs.rx.transformers.Transformers.observeForUI;
@@ -38,18 +33,18 @@ import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
 
 @RequiresActivityViewModel(LoginViewModel.class)
 public final class LoginActivity extends BaseActivity<LoginViewModel> {
-  protected @Bind(R.id.email) EditText emailEditText;
-  protected @Bind(R.id.forgot_your_password_text_view) TextView forgotPasswordTextView;
-  protected @Bind(R.id.login_button) Button loginButton;
-  protected @Bind(R.id.login_toolbar) LoginToolbar loginToolbar;
-  protected @Bind(R.id.password) EditText passwordEditText;
+  protected EditText emailEditText;
+  protected TextView forgotPasswordTextView;
+  protected Button loginButton;
+  protected LoginToolbar loginToolbar;
+  protected EditText passwordEditText;
 
-  protected @BindString(R.string.login_buttons_forgot_password_html) String forgotPasswordString;
-  protected @BindString(R.string.forgot_password_we_sent_an_email_to_email_address_with_instructions_to_reset_your_password) String forgotPasswordSentEmailString;
-  protected @BindString(R.string.login_errors_does_not_match) String loginDoesNotMatchString;
-  protected @BindString(R.string.login_errors_unable_to_log_in) String unableToLoginString;
-  protected @BindString(R.string.login_buttons_log_in) String loginString;
-  protected @BindString(R.string.login_errors_title) String errorTitleString;
+  protected String forgotPasswordString;
+  protected String forgotPasswordSentEmailString;
+  protected String loginDoesNotMatchString;
+  protected String unableToLoginString;
+  protected String loginString;
+  protected String errorTitleString;
 
   private ConfirmDialog confirmResetPasswordSuccessDialog;
 
@@ -61,7 +56,7 @@ public final class LoginActivity extends BaseActivity<LoginViewModel> {
 
     setContentView(R.layout.login_layout);
     ((KSApplication) getApplication()).component().inject(this);
-    ButterKnife.bind(this);
+
     loginToolbar.setTitle(loginString);
     forgotPasswordTextView.setText(Html.fromHtml(forgotPasswordString));
 
@@ -140,23 +135,19 @@ public final class LoginActivity extends BaseActivity<LoginViewModel> {
     finish();
   }
 
-  @OnTextChanged(R.id.email)
   void onEmailTextChanged(final @NonNull CharSequence email) {
     viewModel.inputs.email(email.toString());
   }
 
-  @OnTextChanged(R.id.password)
   void onPasswordTextChanged(final @NonNull CharSequence password) {
     viewModel.inputs.password(password.toString());
   }
 
-  @OnClick(R.id.forgot_your_password_text_view)
   public void forgotYourPasswordTextViewClick() {
     final Intent intent = new Intent(this, ResetPasswordActivity.class);
     startActivityWithTransition(intent, R.anim.slide_in_right, R.anim.fade_out_slide_out_left);
   }
 
-  @OnClick(R.id.login_button)
   public void loginButtonOnClick() {
     viewModel.inputs.loginClick();
   }

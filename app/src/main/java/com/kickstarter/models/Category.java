@@ -11,9 +11,6 @@ import com.kickstarter.R;
 import com.kickstarter.libs.utils.KSColorUtils;
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
-@AutoParcel
 @AutoGson
 public abstract class Category implements Parcelable, Comparable<Category> {
   public abstract int color();
@@ -25,7 +22,6 @@ public abstract class Category implements Parcelable, Comparable<Category> {
   public abstract @Nullable Integer projectsCount();
   public abstract String slug();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder color(int __);
     public abstract Builder id(long __);
@@ -39,7 +35,7 @@ public abstract class Category implements Parcelable, Comparable<Category> {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Category.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

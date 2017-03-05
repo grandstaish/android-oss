@@ -17,17 +17,13 @@ import com.kickstarter.libs.utils.ViewUtils;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class AppRatingDialog extends AppCompatDialog {
   protected @Inject @AppRatingPreference BooleanPreferenceType hasSeenAppRatingPreference;
   protected @Inject Koala koala;
 
-  protected @Bind(R.id.no_thanks_button) Button noThanksButton;
-  protected @Bind(R.id.remind_button) Button remindButton;
-  protected @Bind(R.id.rate_button) Button rateButton;
+  protected Button noThanksButton;
+  protected Button remindButton;
+  protected Button rateButton;
 
   public AppRatingDialog(final @NonNull Context context) {
     super(context);
@@ -38,12 +34,10 @@ public class AppRatingDialog extends AppCompatDialog {
     super.onCreate(savedInstanceState);
     getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
     setContentView(R.layout.app_rating_prompt);
-    ButterKnife.bind(this);
 
     ((KSApplication) getContext().getApplicationContext()).component().inject(this);
   }
 
-  @OnClick(R.id.rate_button)
   protected void rateButtonClick() {
     koala.trackAppRatingNow();
     hasSeenAppRatingPreference.set(true);
@@ -51,13 +45,11 @@ public class AppRatingDialog extends AppCompatDialog {
     ViewUtils.openStoreRating(getContext(), getContext().getPackageName());
   }
 
-  @OnClick(R.id.remind_button)
   protected void remindButtonClick() {
     koala.trackAppRatingRemindLater();
     dismiss();
   }
 
-  @OnClick(R.id.no_thanks_button)
   protected void noThanksButtonClick() {
     koala.trackAppRatingNoThanks();
     hasSeenAppRatingPreference.set(true);

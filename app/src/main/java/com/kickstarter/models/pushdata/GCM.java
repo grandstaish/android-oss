@@ -4,15 +4,11 @@ import android.os.Parcelable;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class GCM implements Parcelable {
   public abstract String alert();
   public abstract String title();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder alert(String __);
     public abstract Builder title(String __);
@@ -20,7 +16,7 @@ public abstract class GCM implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_GCM.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

@@ -55,9 +55,7 @@ public class KSApplication extends MultiDexApplication {
 
     JodaTimeAndroid.init(this);
 
-    component = DaggerApplicationComponent.builder()
-      .applicationModule(new ApplicationModule(this))
-      .build();
+    component = null;
     component().inject(this);
 
     CookieHandler.setDefault(cookieManager);

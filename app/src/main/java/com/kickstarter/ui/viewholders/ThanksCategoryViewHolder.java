@@ -16,10 +16,6 @@ import com.kickstarter.models.Category;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 import static com.kickstarter.libs.utils.ObjectUtils.requireNonNull;
 
 public final class ThanksCategoryViewHolder extends KSViewHolder {
@@ -27,12 +23,12 @@ public final class ThanksCategoryViewHolder extends KSViewHolder {
   private final Context context;
   private final Delegate delegate;
 
-  protected @Bind(R.id.thanks_category_view) CardView cardView;
-  protected @Bind(R.id.explore_text_view) TextView exploreTextView;
-  protected @Bind(R.id.live_projects_text_view) TextView liveProjectsTextView;
+  protected CardView cardView;
+  protected TextView exploreTextView;
+  protected TextView liveProjectsTextView;
 
-  protected @BindString(R.string.category_promo_explore_category) String exploreCategoryString;
-  protected @BindString(R.string.category_promo_project_count_live_projects) String countLiveProjectsString;
+  protected String exploreCategoryString;
+  protected String countLiveProjectsString;
 
   protected @Inject KSString ksString;
 
@@ -46,7 +42,6 @@ public final class ThanksCategoryViewHolder extends KSViewHolder {
     this.context = view.getContext();
 
     ((KSApplication) context.getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override

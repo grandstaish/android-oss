@@ -13,21 +13,16 @@ import android.widget.TextView;
 
 import com.kickstarter.R;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class ConfirmDialog extends AppCompatDialog {
   private final @Nullable String title;
   private final @NonNull String message;
   private final @Nullable String buttonText;
 
-  protected @Bind(R.id.title_text_view) TextView titleTextView;
-  protected @Bind(R.id.message_text_view) TextView messageTextView;
-  protected @Bind(R.id.ok_button) Button okButton;
+  protected TextView titleTextView;
+  protected TextView messageTextView;
+  protected Button okButton;
 
-  protected @BindString(R.string.general_alert_buttons_ok) String okString;
+  protected String okString;
 
   public ConfirmDialog(final @NonNull Context context, final @Nullable String title, final @NonNull String message) {
     super(context);
@@ -49,7 +44,6 @@ public class ConfirmDialog extends AppCompatDialog {
     super.onCreate(savedInstanceState);
     getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
     setContentView(R.layout.generic_dialog_alert);
-    ButterKnife.bind(this);
 
     if (title != null) {
       setTitleText(title);
@@ -93,7 +87,6 @@ public class ConfirmDialog extends AppCompatDialog {
   /**
    * Dismiss the dialog on click ok_button".
    */
-  @OnClick(R.id.ok_button)
   protected void okButtonClick() {
     dismiss();
   }

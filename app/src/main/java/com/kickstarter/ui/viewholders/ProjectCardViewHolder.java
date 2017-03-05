@@ -30,54 +30,48 @@ import org.joda.time.DateTime;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindDimen;
-import butterknife.BindDrawable;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 import static com.kickstarter.libs.utils.ObjectUtils.requireNonNull;
 import static com.kickstarter.libs.utils.ViewUtils.getScreenDensity;
 import static com.kickstarter.libs.utils.ViewUtils.getScreenWidthDp;
 
 public final class ProjectCardViewHolder extends KSViewHolder {
-  protected @Bind(R.id.backers_count) TextView backersCountTextView;
-  protected @Bind(R.id.backing_group) ViewGroup backingViewGroup;
-  protected @Bind(R.id.blurb) TextView blurbTextView;
-  protected @Bind(R.id.category) TextView categoryTextView;
-  protected @Bind(R.id.deadline_countdown) TextView deadlineCountdownTextView;
-  protected @Bind(R.id.deadline_countdown_unit) TextView deadlineCountdownUnitTextView;
-  protected @Bind(R.id.featured) TextView featuredTextView;
-  protected @Bind(R.id.featured_group) ViewGroup featuredViewGroup;
-  protected @Bind(R.id.friend_backing_avatar) ImageView friendBackingAvatarImageView;
-  protected @Bind(R.id.friend_backing_message) TextView friendBackingMessageTextView;
-  protected @Bind(R.id.friend_backing_group) ViewGroup friendBackingViewGroup;
-  protected @Bind(R.id.funding_unsuccessful_text_view) TextView fundingUnsuccessfulTextView;
-  protected @Nullable @Bind(R.id.land_card_view_group) ViewGroup landCardViewGroup;
-  protected @Bind(R.id.name) TextView nameTextView;
-  protected @Bind(R.id.percent) TextView percentTextView;
-  protected @Bind(R.id.percentage_funded) ProgressBar percentageFundedProgressBar;
-  protected @Bind(R.id.photo) ImageView photoImageView;
-  protected @Bind(R.id.potd_view_group) ViewGroup potdViewGroup;
-  protected @Bind(R.id.project_card_view_group) ViewGroup projectCardViewGroup;
-  protected @Bind(R.id.project_metadata_view_group) ViewGroup projectMetadataViewGroup;
-  protected @Bind(R.id.project_state_view_group) ViewGroup projectStateViewGroup;
-  protected @Bind(R.id.starred_view_group) ViewGroup starredViewGroup;
-  protected @Bind(R.id.successfully_funded_text_view) TextView successfullyFundedTextView;
+  protected TextView backersCountTextView;
+  protected ViewGroup backingViewGroup;
+  protected TextView blurbTextView;
+  protected TextView categoryTextView;
+  protected TextView deadlineCountdownTextView;
+  protected TextView deadlineCountdownUnitTextView;
+  protected TextView featuredTextView;
+  protected ViewGroup featuredViewGroup;
+  protected ImageView friendBackingAvatarImageView;
+  protected TextView friendBackingMessageTextView;
+  protected ViewGroup friendBackingViewGroup;
+  protected TextView fundingUnsuccessfulTextView;
+  protected @Nullable ViewGroup landCardViewGroup;
+  protected TextView nameTextView;
+  protected TextView percentTextView;
+  protected ProgressBar percentageFundedProgressBar;
+  protected ImageView photoImageView;
+  protected ViewGroup potdViewGroup;
+  protected ViewGroup projectCardViewGroup;
+  protected ViewGroup projectMetadataViewGroup;
+  protected ViewGroup projectStateViewGroup;
+  protected ViewGroup starredViewGroup;
+  protected TextView successfullyFundedTextView;
 
-  protected @BindDimen(R.dimen.grid_1) int grid1Dimen;
-  protected @BindDimen(R.dimen.grid_2) int grid2Dimen;
-  protected @BindDimen(R.dimen.grid_3) int grid3Dimen;
-  protected @BindDimen(R.dimen.grid_4) int grid4Dimen;
+  protected int grid1Dimen;
+  protected int grid2Dimen;
+  protected int grid3Dimen;
+  protected int grid4Dimen;
 
-  protected @BindDrawable(R.drawable.gray_gradient) Drawable grayGradientDrawable;
+  protected Drawable grayGradientDrawable;
 
-  protected @BindString(R.string.discovery_baseball_card_status_banner_canceled_date) String bannerCanceledDateString;
-  protected @BindString(R.string.discovery_baseball_card_status_banner_suspended_date) String bannerSuspendedDateString;
-  protected @BindString(R.string.discovery_baseball_card_status_banner_funding_unsuccessful_date) String fundingUnsuccessfulDateString;
-  protected @BindString(R.string.discovery_baseball_card_status_banner_successful_date) String bannerSuccessfulDateString;
-  protected @BindString(R.string.discovery_baseball_card_metadata_featured_project) String featuredInString;
-  protected @BindString(R.string.discovery_baseball_card_stats_pledged_of_goal) String pledgedOfGoalString;
+  protected String bannerCanceledDateString;
+  protected String bannerSuspendedDateString;
+  protected String fundingUnsuccessfulDateString;
+  protected String bannerSuccessfulDateString;
+  protected String featuredInString;
+  protected String pledgedOfGoalString;
 
   private Project project;
   private Context context;
@@ -95,7 +89,6 @@ public final class ProjectCardViewHolder extends KSViewHolder {
     this.context = view.getContext();
 
     ((KSApplication) context.getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override

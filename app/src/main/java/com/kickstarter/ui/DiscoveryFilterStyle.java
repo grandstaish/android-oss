@@ -2,9 +2,6 @@ package com.kickstarter.ui;
 
 import android.os.Parcelable;
 
-import auto.parcel.AutoParcel;
-
-@AutoParcel
 public abstract class DiscoveryFilterStyle implements Parcelable {
   public abstract boolean light();
   public abstract boolean primary();
@@ -12,7 +9,6 @@ public abstract class DiscoveryFilterStyle implements Parcelable {
   public abstract boolean showLiveProjectsCount();
   public abstract boolean visible();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder light(boolean __);
     public abstract Builder primary(boolean __);
@@ -23,8 +19,7 @@ public abstract class DiscoveryFilterStyle implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_DiscoveryFilterStyle.Builder()
-      .showLiveProjectsCount(false);
+    return null;
   }
 
   public abstract Builder toBuilder();

@@ -12,10 +12,7 @@ import org.joda.time.DateTime;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class Activity implements Parcelable {
   public abstract @Category String category();
   public abstract DateTime createdAt();
@@ -25,7 +22,6 @@ public abstract class Activity implements Parcelable {
   public abstract DateTime updatedAt();
   public abstract @Nullable User user();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder category(@Category String __);
     public abstract Builder createdAt(DateTime __);
@@ -38,7 +34,7 @@ public abstract class Activity implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Activity.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

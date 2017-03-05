@@ -8,8 +8,6 @@ import com.kickstarter.models.Project;
 
 import java.math.RoundingMode;
 
-import auto.parcel.AutoParcel;
-
 public final class KSCurrency {
   private final CurrentConfigType currentConfig;
 
@@ -110,14 +108,12 @@ public final class KSCurrency {
     return (currencyIsDupe && !userIsUS) || (currencyIsDupe && !projectIsUS);
   }
 
-  @AutoParcel
   public abstract static class CurrencyOptions implements Parcelable {
     public abstract String country();
     public abstract String currencyCode();
     public abstract String currencySymbol();
     public abstract float value();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder country(String __);
       public abstract Builder currencyCode(String __);
@@ -127,7 +123,7 @@ public final class KSCurrency {
     }
 
     public static Builder builder() {
-      return new AutoParcel_KSCurrency_CurrencyOptions.Builder();
+      return null;
     }
 
     public abstract Builder toBuilder();

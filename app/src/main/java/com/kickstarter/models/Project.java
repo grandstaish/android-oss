@@ -17,10 +17,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class Project implements Parcelable {
   public abstract int backersCount();
   public abstract String blurb();
@@ -56,7 +53,6 @@ public abstract class Project implements Parcelable {
   public abstract Urls urls();
   public abstract @Nullable Video video();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder backersCount(int __);
     public abstract Builder blurb(String __);
@@ -95,10 +91,7 @@ public abstract class Project implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Project.Builder()
-      .isBacking(false)
-      .isStarred(false)
-      .rewards(new ArrayList<>());
+    return null;
   }
 
   public abstract Builder toBuilder();
@@ -136,13 +129,11 @@ public abstract class Project implements Parcelable {
     return urls().web().project();
   }
 
-  @AutoParcel
   @AutoGson
   public abstract static class Urls implements Parcelable {
     public abstract Web web();
     public abstract @Nullable Api api();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder web(Web __);
       public abstract Builder api(Api __);
@@ -150,12 +141,11 @@ public abstract class Project implements Parcelable {
     }
 
     public static Builder builder() {
-      return new AutoParcel_Project_Urls.Builder();
+      return null;
     }
 
     public abstract Builder toBuilder();
 
-    @AutoParcel
     @AutoGson
     public abstract static class Web implements Parcelable {
       public abstract String project();
@@ -163,7 +153,6 @@ public abstract class Project implements Parcelable {
       public abstract String rewards();
       public abstract @Nullable String updates();
 
-      @AutoParcel.Builder
       public abstract static class Builder {
         public abstract Builder project(String __);
         public abstract Builder projectShort(String __);
@@ -173,7 +162,7 @@ public abstract class Project implements Parcelable {
       }
 
       public static Builder builder() {
-        return new AutoParcel_Project_Urls_Web.Builder();
+        return null;
       }
 
       public abstract Builder toBuilder();
@@ -193,14 +182,12 @@ public abstract class Project implements Parcelable {
       }
     }
 
-    @AutoParcel
     @AutoGson
     public abstract static class Api implements Parcelable {
       public abstract @Nullable String project();
       public abstract @Nullable String comments();
       public abstract @Nullable String updates();
 
-      @AutoParcel.Builder
       public abstract static class Builder {
         public abstract Builder project(String __);
         public abstract Builder comments(String __);
@@ -209,7 +196,7 @@ public abstract class Project implements Parcelable {
       }
 
       public static Builder builder() {
-        return new AutoParcel_Project_Urls_Api.Builder();
+        return null;
       }
 
       public abstract Builder toBuilder();

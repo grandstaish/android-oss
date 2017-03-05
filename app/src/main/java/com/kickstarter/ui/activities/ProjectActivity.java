@@ -28,37 +28,31 @@ import com.kickstarter.viewmodels.ProjectViewModel;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.BindDimen;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
 
 @RequiresActivityViewModel(ProjectViewModel.ViewModel.class)
 public final class ProjectActivity extends BaseActivity<ProjectViewModel.ViewModel> {
   private ProjectAdapter adapter;
 
-  protected @Bind(R.id.project_recycler_view) RecyclerView projectRecyclerView;
-  protected @Bind(R.id.star_icon) IconButton starButton;
-  protected @Bind(R.id.back_project_button) Button backProjectButton;
-  protected @Bind(R.id.manage_pledge_button) Button managePledgeButton;
-  protected @Bind(R.id.project_action_buttons) ViewGroup projectActionButtonsViewGroup;
-  protected @Bind(R.id.view_pledge_button) Button viewPledgeButton;
+  protected RecyclerView projectRecyclerView;
+  protected IconButton starButton;
+  protected Button backProjectButton;
+  protected Button managePledgeButton;
+  protected ViewGroup projectActionButtonsViewGroup;
+  protected Button viewPledgeButton;
 
-  protected @BindColor(R.color.green) int green;
-  protected @BindColor(R.color.text_primary) int textPrimary;
+  protected int green;
+  protected int textPrimary;
 
-  protected @BindDimen(R.dimen.grid_8) int grid8Dimen;
+  protected int grid8Dimen;
 
-  protected @BindString(R.string.project_back_button) String projectBackButtonString;
-  protected @BindString(R.string.project_checkout_manage_navbar_title) String managePledgeString;
-  protected @BindString(R.string.project_share_twitter_message) String projectShareString;
-  protected @BindString(R.string.project_star_confirmation) String projectStarConfirmationString;
-  protected @BindString(R.string.project_subpages_menu_buttons_campaign) String campaignString;
-  protected @BindString(R.string.project_subpages_menu_buttons_creator) String creatorString;
-  protected @BindString(R.string.project_subpages_menu_buttons_updates) String updatesString;
+  protected String projectBackButtonString;
+  protected String managePledgeString;
+  protected String projectShareString;
+  protected String projectStarConfirmationString;
+  protected String campaignString;
+  protected String creatorString;
+  protected String updatesString;
 
   protected @Inject KSString ksString;
 
@@ -66,7 +60,6 @@ public final class ProjectActivity extends BaseActivity<ProjectViewModel.ViewMod
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.project_layout);
-    ButterKnife.bind(this);
     ((KSApplication) getApplication()).component().inject(this);
 
     final int bottomButtonVisibility = ViewUtils.isLandscape(this) ? View.GONE : View.VISIBLE;
@@ -153,27 +146,22 @@ public final class ProjectActivity extends BaseActivity<ProjectViewModel.ViewMod
     starButton.setTextColor(starColor);
   }
 
-  @OnClick(R.id.back_project_button)
   public void backProjectButtonOnClick() {
     viewModel.inputs.backProjectButtonClicked();
   }
 
-  @OnClick(R.id.manage_pledge_button)
   public void managePledgeOnClick() {
     viewModel.inputs.managePledgeButtonClicked();
   }
 
-  @OnClick(R.id.view_pledge_button)
   public void viewPledgeOnClick() {
     viewModel.inputs.viewPledgeButtonClicked();
   }
 
-  @OnClick(R.id.star_icon)
   public void starProjectClick() {
     viewModel.inputs.starButtonClicked();
   }
 
-  @OnClick(R.id.share_icon)
   public void shareProjectClick() {
     viewModel.inputs.shareButtonClicked();
   }

@@ -5,9 +5,6 @@ import android.support.annotation.Nullable;
 
 import org.joda.time.DateTime;
 
-import auto.parcel.AutoParcel;
-
-@AutoParcel
 public abstract class RelativeDateTimeOptions implements Parcelable {
   /**
    * Abbreviates string, e.g.: "in 1 hr"
@@ -30,7 +27,6 @@ public abstract class RelativeDateTimeOptions implements Parcelable {
    */
   public abstract int threshold();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder abbreviated(boolean __);
     public abstract Builder absolute(boolean __);
@@ -40,10 +36,7 @@ public abstract class RelativeDateTimeOptions implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_RelativeDateTimeOptions.Builder()
-      .abbreviated(false)
-      .absolute(false)
-      .threshold(THIRTY_DAYS_IN_SECONDS);
+    return null;
   }
 
   public abstract Builder toBuilder();

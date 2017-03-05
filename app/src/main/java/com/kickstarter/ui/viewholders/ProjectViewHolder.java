@@ -43,14 +43,6 @@ import java.math.RoundingMode;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.BindDimen;
-import butterknife.BindDrawable;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import static com.kickstarter.libs.utils.DateTimeUtils.mediumDate;
 import static com.kickstarter.libs.utils.DateTimeUtils.mediumDateShortTime;
 import static com.kickstarter.libs.utils.ObjectUtils.coalesce;
@@ -65,66 +57,66 @@ public final class ProjectViewHolder extends KSViewHolder {
   private Context context;
   private final Delegate delegate;
 
-  protected @Bind(R.id.avatar) ImageView avatarImageView;
-  protected @Bind(R.id.avatar_name) TextView avatarNameTextView;
-  protected @Bind(R.id.backers_count) TextView backersCountTextView;
-  protected @Bind(R.id.backer_label) LinearLayout backerLabelLinearLayout;
-  protected @Bind(R.id.back_project_button) @Nullable Button backProjectButton;
-  protected @Bind(R.id.blurb) TextView blurbTextView;
-  protected @Bind(R.id.category) TextView categoryTextView;
-  protected @Bind(R.id.comments_count) TextView commentsCountTextView;
-  protected @Bind(R.id.creator_name) TextView creatorNameTextView;
-  protected @Bind(R.id.deadline_countdown_text_view) TextView deadlineCountdownTextView;
-  protected @Bind(R.id.deadline_countdown_unit_text_view) TextView deadlineCountdownUnitTextView;
-  protected @Bind(R.id.project_disclaimer_text_view) TextView projectDisclaimerTextView;
-  protected @Bind(R.id.goal) TextView goalTextView;
-  protected @Bind(R.id.land_overlay_text) @Nullable ViewGroup landOverlayTextViewGroup;
-  protected @Bind(R.id.location) TextView locationTextView;
-  protected @Bind(R.id.manage_pledge_button) @Nullable Button managePledgeButton;
-  protected @Bind(R.id.name_creator_view) @Nullable ViewGroup nameCreatorViewGroup;
-  protected @Bind(R.id.percentage_funded) ProgressBar percentageFundedProgressBar;
-  protected @Bind(R.id.project_photo) ImageView photoImageView;
-  protected @Bind(R.id.play_button_overlay) IconButton playButton;
-  protected @Bind(R.id.pledged) TextView pledgedTextView;
-  protected @Bind(R.id.project_name) TextView projectNameTextView;
-  protected @Bind(R.id.project_social_image) ImageView projectSocialImageView;
-  protected @Bind(R.id.project_social_text) TextView projectSocialTextView;
-  protected @Bind(R.id.project_stats_view) ViewGroup projectStatsViewGroup;
-  protected @Bind(R.id.project_social_view) ViewGroup projectSocialViewGroup;
-  protected @Bind(R.id.project_state_header_text_view) TextView projectStateHeaderTextView;
-  protected @Bind(R.id.project_state_subhead_text_view) TextView projectStateSubheadTextView;
-  protected @Bind(R.id.project_state_view_group) ViewGroup projectStateViewGroup;
-  protected @Bind(R.id.view_pledge_button) @Nullable Button viewPledgeButton;
-  protected @Bind(R.id.updates_count) TextView updatesCountTextView;
-  protected @Bind(R.id.usd_conversion_text_view) TextView usdConversionTextView;
+  protected ImageView avatarImageView;
+  protected TextView avatarNameTextView;
+  protected TextView backersCountTextView;
+  protected LinearLayout backerLabelLinearLayout;
+  protected @Nullable Button backProjectButton;
+  protected TextView blurbTextView;
+  protected TextView categoryTextView;
+  protected TextView commentsCountTextView;
+  protected TextView creatorNameTextView;
+  protected TextView deadlineCountdownTextView;
+  protected TextView deadlineCountdownUnitTextView;
+  protected TextView projectDisclaimerTextView;
+  protected TextView goalTextView;
+  protected @Nullable ViewGroup landOverlayTextViewGroup;
+  protected TextView locationTextView;
+  protected @Nullable Button managePledgeButton;
+  protected @Nullable ViewGroup nameCreatorViewGroup;
+  protected ProgressBar percentageFundedProgressBar;
+  protected ImageView photoImageView;
+  protected IconButton playButton;
+  protected TextView pledgedTextView;
+  protected TextView projectNameTextView;
+  protected ImageView projectSocialImageView;
+  protected TextView projectSocialTextView;
+  protected ViewGroup projectStatsViewGroup;
+  protected ViewGroup projectSocialViewGroup;
+  protected TextView projectStateHeaderTextView;
+  protected TextView projectStateSubheadTextView;
+  protected ViewGroup projectStateViewGroup;
+  protected @Nullable Button viewPledgeButton;
+  protected TextView updatesCountTextView;
+  protected TextView usdConversionTextView;
 
-  protected @BindColor(R.color.green_alpha_20) int greenAlpha50Color;
-  protected @BindColor(R.color.medium_gray) int mediumGrayColor;
+  protected int greenAlpha50Color;
+  protected int mediumGrayColor;
 
-  protected @BindDimen(R.dimen.grid_1) int grid1Dimen;
-  protected @BindDimen(R.dimen.grid_2) int grid2Dimen;
-  protected @BindDimen(R.dimen.grid_3) int grid3Dimen;
-  protected @BindDimen(R.dimen.grid_4) int grid4Dimen;
+  protected int grid1Dimen;
+  protected int grid2Dimen;
+  protected int grid3Dimen;
+  protected int grid4Dimen;
 
-  protected @BindDrawable(R.drawable.click_indicator_light_masked) Drawable clickIndicatorLightMaskedDrawable;
-  protected @BindDrawable(R.drawable.gray_gradient) Drawable grayGradientDrawable;
+  protected Drawable clickIndicatorLightMaskedDrawable;
+  protected Drawable grayGradientDrawable;
 
-  protected @BindString(R.string.project_creator_by_creator_html) String byCreatorString;
-  protected @BindString(R.string.discovery_baseball_card_blurb_read_more) String blurbReadMoreString;
-  protected @BindString(R.string.discovery_baseball_card_stats_convert_from_pledged_of_goal) String convertedFromString;
-  protected @BindString(R.string.project_disclaimer_goal_not_reached) String projectDisclaimerGoalNotReachedString;
-  protected @BindString(R.string.project_disclaimer_goal_reached) String projectDisclaimerGoalReachedString;
-  protected @BindString(R.string.project_status_funding_canceled) String fundingCanceledString;
-  protected @BindString(R.string.project_status_funding_project_canceled_by_creator) String fundingCanceledByCreatorString;
-  protected @BindString(R.string.project_status_project_was_successfully_funded_on_deadline) String successfullyFundedOnDeadlineString;
-  protected @BindString(R.string.project_status_funding_suspended) String fundingSuspendedString;
-  protected @BindString(R.string.project_status_funding_project_suspended) String fundingProjectSuspendedString;
-  protected @BindString(R.string.project_status_funding_unsuccessful) String fundingUnsuccessfulString;
-  protected @BindString(R.string.project_status_project_funding_goal_not_reached) String fundingGoalNotReachedString;
-  protected @BindString(R.string.project_status_funded) String fundedString;
-  protected @BindString(R.string.discovery_baseball_card_stats_pledged_of_goal) String pledgedOfGoalString;
-  protected @BindString(R.string.discovery_baseball_card_stats_pledged_of_goal_short) String ofGoalString;
-  protected @BindString(R.string.discovery_baseball_card_stats_backers) String backersString;
+  protected String byCreatorString;
+  protected String blurbReadMoreString;
+  protected String convertedFromString;
+  protected String projectDisclaimerGoalNotReachedString;
+  protected String projectDisclaimerGoalReachedString;
+  protected String fundingCanceledString;
+  protected String fundingCanceledByCreatorString;
+  protected String successfullyFundedOnDeadlineString;
+  protected String fundingSuspendedString;
+  protected String fundingProjectSuspendedString;
+  protected String fundingUnsuccessfulString;
+  protected String fundingGoalNotReachedString;
+  protected String fundedString;
+  protected String pledgedOfGoalString;
+  protected String ofGoalString;
+  protected String backersString;
 
   protected @Inject KSCurrency ksCurrency;
   protected @Inject KSString ksString;
@@ -146,7 +138,6 @@ public final class ProjectViewHolder extends KSViewHolder {
     this.context = view.getContext();
 
     ((KSApplication) context.getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -226,37 +217,33 @@ public final class ProjectViewHolder extends KSViewHolder {
     setStatsContentDescription();
   }
 
-  @Nullable @OnClick(R.id.back_project_button)
+  @Nullable
   public void backProjectButtonOnClick() {
     delegate.projectViewHolderBackProjectClicked(this);
   }
 
-  @OnClick({R.id.blurb, R.id.campaign})
   public void blurbClick() {
     delegate.projectViewHolderBlurbClicked(this);
   }
 
-  @OnClick(R.id.comments)
   public void commentsClick() {
     delegate.projectViewHolderCommentsClicked(this);
   }
 
-  @OnClick({R.id.creator_name, R.id.creator_info})
   public void creatorNameClick() {
     delegate.projectViewHolderCreatorClicked(this);
   }
 
-  @Nullable @OnClick(R.id.manage_pledge_button)
+  @Nullable
   public void managePledgeOnClick() {
     delegate.projectViewHolderManagePledgeClicked(this);
   }
 
-  @OnClick(R.id.play_button_overlay)
   public void playButtonClick() {
     delegate.projectViewHolderVideoStarted(this);
   }
 
-  @Nullable @OnClick(R.id.view_pledge_button)
+  @Nullable
   public void viewPledgeOnClick() {
     delegate.projectViewHolderViewPledgeClicked(this);
   }
@@ -430,7 +417,6 @@ public final class ProjectViewHolder extends KSViewHolder {
     deadlineCountdownTextView.setContentDescription(deadlineCountdownContentDescription);
   }
 
-  @OnClick(R.id.updates)
   public void updatesClick() {
     delegate.projectViewHolderUpdatesClicked(this);
   }

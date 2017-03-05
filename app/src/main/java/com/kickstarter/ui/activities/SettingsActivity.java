@@ -32,11 +32,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.kickstarter.libs.utils.BooleanUtils.isTrue;
@@ -44,37 +39,37 @@ import static com.kickstarter.libs.utils.IntegerUtils.intValueOrZero;
 
 @RequiresActivityViewModel(SettingsViewModel.class)
 public final class SettingsActivity extends BaseActivity<SettingsViewModel> {
-  protected @Bind(R.id.games_switch) SwitchCompat gamesNewsletterSwitch;
-  protected @Bind(R.id.happening_now_switch) SwitchCompat happeningNewsletterSwitch;
-  protected @Bind(R.id.friend_activity_mail_icon) IconTextView friendActivityMailIconTextView;
-  protected @Bind(R.id.friend_activity_phone_icon) IconTextView friendActivityPhoneIconTextView;
-  protected @Bind(R.id.new_followers_mail_icon) IconTextView newFollowersMailIconTextView;
-  protected @Bind(R.id.new_followers_phone_icon) IconTextView newFollowersPhoneIconTextView;
-  protected @Bind(R.id.project_notifications_count) TextView projectNotificationsCountTextView;
-  protected @Bind(R.id.project_updates_mail_icon) IconTextView projectUpdatesMailIconTextView;
-  protected @Bind(R.id.project_updates_phone_icon) IconTextView projectUpdatesPhoneIconTextView;
-  protected @Bind(R.id.kickstarter_news_and_events_switch) SwitchCompat promoNewsletterSwitch;
-  protected @Bind(R.id.projects_we_love_switch) SwitchCompat weeklyNewsletterSwitch;
+  protected SwitchCompat gamesNewsletterSwitch;
+  protected SwitchCompat happeningNewsletterSwitch;
+  protected IconTextView friendActivityMailIconTextView;
+  protected IconTextView friendActivityPhoneIconTextView;
+  protected IconTextView newFollowersMailIconTextView;
+  protected IconTextView newFollowersPhoneIconTextView;
+  protected TextView projectNotificationsCountTextView;
+  protected IconTextView projectUpdatesMailIconTextView;
+  protected IconTextView projectUpdatesPhoneIconTextView;
+  protected SwitchCompat promoNewsletterSwitch;
+  protected SwitchCompat weeklyNewsletterSwitch;
 
-  protected @BindColor(R.color.green) int green;
-  protected @BindColor(R.color.gray) int gray;
+  protected int green;
+  protected int gray;
 
-  protected @BindString(R.string.profile_settings_newsletter_games) String gamesNewsletterString;
-  protected @BindString(R.string.profile_settings_newsletter_happening) String happeningNewsletterString;
-  protected @BindString(R.string.mailto) String mailtoString;
-  protected @BindString(R.string.Logged_Out) String loggedOutString;
-  protected @BindString(R.string.profile_settings_newsletter_weekly) String weeklyNewsletterString;
-  protected @BindString(R.string.profile_settings_newsletter_promo) String promoNewsletterString;
-  protected @BindString(R.string.profile_settings_newsletter_opt_in_message) String optInMessageString;
-  protected @BindString(R.string.profile_settings_newsletter_opt_in_title) String optInTitleString;
-  protected @BindString(R.string.profile_settings_accessibility_subscribe_mobile_notifications) String subscribeMobileString;
-  protected @BindString(R.string.profile_settings_accessibility_subscribe_notifications) String subscribeString;
-  protected @BindString(R.string.support_email_body) String supportEmailBodyString;
-  protected @BindString(R.string.support_email_subject) String supportEmailSubjectString;
-  protected @BindString(R.string.support_email_to_android) String supportEmailString;
-  protected @BindString(R.string.profile_settings_error) String unableToSaveString;
-  protected @BindString(R.string.profile_settings_accessibility_unsubscribe_mobile_notifications) String unsubscribeMobileString;
-  protected @BindString(R.string.profile_settings_accessibility_unsubscribe_notifications) String unsubscribeString;
+  protected String gamesNewsletterString;
+  protected String happeningNewsletterString;
+  protected String mailtoString;
+  protected String loggedOutString;
+  protected String weeklyNewsletterString;
+  protected String promoNewsletterString;
+  protected String optInMessageString;
+  protected String optInTitleString;
+  protected String subscribeMobileString;
+  protected String subscribeString;
+  protected String supportEmailBodyString;
+  protected String supportEmailSubjectString;
+  protected String supportEmailString;
+  protected String unableToSaveString;
+  protected String unsubscribeMobileString;
+  protected String unsubscribeString;
 
   @Inject CurrentUserType currentUser;
   @Inject KSString ksString;
@@ -93,7 +88,6 @@ public final class SettingsActivity extends BaseActivity<SettingsViewModel> {
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.settings_layout);
-    ButterKnife.bind(this);
     ((KSApplication) getApplication()).component().inject(this);
 
     viewModel.outputs.user()
@@ -144,7 +138,6 @@ public final class SettingsActivity extends BaseActivity<SettingsViewModel> {
       .subscribe(__ -> logout());
   }
 
-  @OnClick(R.id.contact)
   public void contactClick() {
     viewModel.inputs.contactEmailClicked();
 
@@ -154,33 +147,27 @@ public final class SettingsActivity extends BaseActivity<SettingsViewModel> {
       .subscribe(this::composeContactEmail);
   }
 
-  @OnClick(R.id.cookie_policy)
   public void cookiePolicyClick() {
     startHelpActivity(HelpActivity.CookiePolicy.class);
   }
 
-  @OnClick(R.id.faq)
   public void faqClick() {
     startHelpActivity(HelpActivity.Faq.class);
   }
 
-  @OnClick(R.id.how_kickstarter_works)
   public void howKickstarterWorksClick() {
     startHelpActivity(HelpActivity.HowItWorks.class);
   }
 
-  @OnClick(R.id.log_out_button)
   public void logoutClick() {
     viewModel.inputs.logoutClicked();
   }
 
-  @OnClick(R.id.manage_project_notifications)
   public void manageProjectNotifications() {
     final Intent intent = new Intent(this, ProjectNotificationSettingsActivity.class);
     startActivityWithTransition(intent, R.anim.slide_in_right, R.anim.fade_out_slide_out_left);
   }
 
-  @OnClick(R.id.privacy_policy)
   public void privacyPolicyClick() {
     startHelpActivity(HelpActivity.Privacy.class);
   }
@@ -190,42 +177,34 @@ public final class SettingsActivity extends BaseActivity<SettingsViewModel> {
     startActivityWithTransition(intent, R.anim.slide_in_right, R.anim.fade_out_slide_out_left);
   }
 
-  @OnClick(R.id.friend_activity_mail_icon)
   public void toggleNotifyOfFriendActivity() {
     viewModel.inputs.notifyOfFriendActivity(!notifyOfFriendActivity);
   }
 
-  @OnClick(R.id.friend_activity_phone_icon)
   public void toggleNotifyMobileOfFriendActivity() {
     viewModel.inputs.notifyMobileOfFriendActivity(!notifyMobileOfFriendActivity);
   }
 
-  @OnClick(R.id.new_followers_mail_icon)
   public void toggleNotifyOfNewFollowers() {
     viewModel.inputs.notifyOfFollower(!notifyOfFollower);
   }
 
-  @OnClick(R.id.new_followers_phone_icon)
   public void toggleNotifyMobileOfNewFollowers() {
     viewModel.inputs.notifyMobileOfFollower(!notifyMobileOfFollower);
   }
 
-  @OnClick(R.id.project_updates_mail_icon)
   public void toggleNotifyOfUpdates() {
     viewModel.inputs.notifyOfUpdates(!notifyOfUpdates);
   }
 
-  @OnClick(R.id.project_updates_phone_icon)
   public void toggleNotifyMobileOfUpdates() {
     viewModel.inputs.notifyMobileOfUpdates(!notifyMobileOfUpdates);
   }
 
-  @OnClick(R.id.terms_of_use)
   public void termsOfUseClick() {
     startHelpActivity(HelpActivity.Terms.class);
   }
 
-  @OnClick(R.id.settings_rate_us)
   public void rateUsClick() {
     ViewUtils.openStoreRating(this, getPackageName());
   }

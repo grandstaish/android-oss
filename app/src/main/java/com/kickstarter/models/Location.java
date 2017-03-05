@@ -5,10 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class Location implements Parcelable {
   public abstract long id();
   public abstract String displayableName();
@@ -18,7 +15,6 @@ public abstract class Location implements Parcelable {
   public abstract String country();
   public abstract @Nullable Integer projectsCount();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder displayableName(String __);
     public abstract Builder id(long __);
@@ -31,7 +27,7 @@ public abstract class Location implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Location.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

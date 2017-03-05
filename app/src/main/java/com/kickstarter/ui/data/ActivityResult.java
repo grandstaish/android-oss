@@ -6,15 +6,11 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import auto.parcel.AutoParcel;
-
-@AutoParcel
 public abstract class ActivityResult implements Parcelable {
   public abstract int requestCode();
   public abstract int resultCode();
   public abstract @Nullable Intent intent();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder requestCode(int __);
     public abstract Builder resultCode(int __);
@@ -31,7 +27,7 @@ public abstract class ActivityResult implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_ActivityResult.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

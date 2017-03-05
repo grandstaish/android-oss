@@ -23,10 +23,6 @@ import com.kickstarter.viewmodels.LoginToutViewModel;
 
 import java.util.Arrays;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 
@@ -35,26 +31,25 @@ import static com.kickstarter.libs.utils.TransitionUtils.transition;
 
 @RequiresActivityViewModel(LoginToutViewModel.class)
 public final class LoginToutActivity extends BaseActivity<LoginToutViewModel> {
-  @Bind(R.id.disclaimer_text_view) TextView disclaimerTextView;
-  @Bind(R.id.login_button) Button loginButton;
-  @Bind(R.id.facebook_login_button) Button facebookButton;
-  @Bind(R.id.sign_up_button) Button signupButton;
-  @Bind(R.id.help_button) TextView helpButton;
-  @Bind(R.id.login_toolbar) LoginToolbar loginToolbar;
+  TextView disclaimerTextView;
+  Button loginButton;
+  Button facebookButton;
+  Button signupButton;
+  TextView helpButton;
+  LoginToolbar loginToolbar;
 
-  @BindString(R.string.login_tout_navbar_title) String loginOrSignUpString;
-  @BindString(R.string.login_errors_title) String loginErrorTitleString;
-  @BindString(R.string.login_errors_unable_to_log_in) String unableToLoginString;
-  @BindString(R.string.general_error_oops) String errorTitleString;
-  @BindString(R.string.login_tout_errors_facebook_authorization_exception_message) String troubleLoggingInString;
-  @BindString(R.string.login_tout_errors_facebook_authorization_exception_button) String tryAgainString;
+  String loginOrSignUpString;
+  String loginErrorTitleString;
+  String unableToLoginString;
+  String errorTitleString;
+  String troubleLoggingInString;
+  String tryAgainString;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.login_tout_layout);
-    ButterKnife.bind(this);
     loginToolbar.setTitle(loginOrSignUpString);
 
     viewModel.outputs.finishWithSuccessfulResult()
@@ -107,24 +102,20 @@ public final class LoginToutActivity extends BaseActivity<LoginToutViewModel> {
       );
   }
 
-  @OnClick(R.id.disclaimer_text_view)
   public void disclaimerTextViewClick() {
     new LoginPopupMenu(this, helpButton).show();
   }
 
-  @OnClick(R.id.facebook_login_button)
   public void facebookLoginClick() {
     viewModel.inputs.facebookLoginClick(this,
       Arrays.asList(getResources().getStringArray(R.array.facebook_permissions_array))
     );
   }
 
-  @OnClick(R.id.login_button)
   public void loginButtonClick() {
     viewModel.inputs.loginClick();
   }
 
-  @OnClick(R.id.sign_up_button)
   public void signupButtonClick() {
     viewModel.inputs.signupClick();
   }

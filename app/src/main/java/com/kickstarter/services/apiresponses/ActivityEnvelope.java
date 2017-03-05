@@ -8,26 +8,20 @@ import com.kickstarter.models.Activity;
 
 import java.util.List;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class ActivityEnvelope implements Parcelable {
   public abstract List<Activity> activities();
   public abstract UrlsEnvelope urls();
 
   @AutoGson
-  @AutoParcel
   public abstract static class UrlsEnvelope implements Parcelable {
     public abstract ApiEnvelope api();
 
     @AutoGson
-    @AutoParcel
     public abstract static class ApiEnvelope implements Parcelable {
       public abstract String moreActivities();
       public abstract @Nullable String newerActivities();
 
-      @AutoParcel.Builder
       public abstract static class Builder {
         public abstract Builder moreActivities(String __);
         public abstract Builder newerActivities(String __);
@@ -35,22 +29,20 @@ public abstract class ActivityEnvelope implements Parcelable {
       }
 
       public static Builder builder() {
-        return new AutoParcel_ActivityEnvelope_UrlsEnvelope_ApiEnvelope.Builder();
+        return null;
       }
     }
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder api(ApiEnvelope __);
       public abstract UrlsEnvelope build();
     }
 
     public static Builder builder() {
-      return new AutoParcel_ActivityEnvelope_UrlsEnvelope.Builder();
+      return null;
     }
   }
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder activities(List<Activity> __);
     public abstract Builder urls(UrlsEnvelope __);
@@ -58,7 +50,7 @@ public abstract class ActivityEnvelope implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_ActivityEnvelope.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

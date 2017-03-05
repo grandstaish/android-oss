@@ -20,10 +20,6 @@ import com.kickstarter.ui.toolbars.LoginToolbar;
 import com.kickstarter.ui.views.LoginPopupMenu;
 import com.kickstarter.viewmodels.FacebookConfirmationViewModel;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
@@ -32,20 +28,19 @@ import static com.kickstarter.libs.utils.TransitionUtils.transition;
 
 @RequiresActivityViewModel(FacebookConfirmationViewModel.class)
 public class FacebookConfirmationActivity extends BaseActivity<FacebookConfirmationViewModel> {
-  protected @Bind(R.id.email) TextView emailTextView;
-  protected @Bind(R.id.help_button) TextView helpButton;
-  protected @Bind(R.id.sign_up_with_facebook_toolbar) LoginToolbar signUpWithFacebookToolbar;
-  protected @Bind(R.id.newsletter_switch) SwitchCompat newsletterSwitch;
+  protected TextView emailTextView;
+  protected TextView helpButton;
+  protected LoginToolbar signUpWithFacebookToolbar;
+  protected SwitchCompat newsletterSwitch;
 
-  protected @BindString(R.string.facebook_confirmation_navbar_title) String signUpWithFacebookString;
-  protected @BindString(R.string.signup_error_title) String errorTitleString;
+  protected String signUpWithFacebookString;
+  protected String errorTitleString;
 
   @Override
   public void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.facebook_confirmation_layout);
-    ButterKnife.bind(this);
     signUpWithFacebookToolbar.setTitle(signUpWithFacebookString);
 
     viewModel.outputs.prefillEmail()
@@ -73,17 +68,14 @@ public class FacebookConfirmationActivity extends BaseActivity<FacebookConfirmat
       .subscribe(__ -> viewModel.inputs.sendNewslettersClick(newsletterSwitch.isChecked()));
   }
 
-  @OnClick(R.id.create_new_account_button)
   public void createNewAccountClick() {
     viewModel.inputs.createNewAccountClick();
   }
 
-  @OnClick(R.id.disclaimer)
   public void disclaimerClick() {
     new LoginPopupMenu(this, helpButton).show();
   }
 
-  @OnClick(R.id.login_button)
   public void loginWithEmailClick() {
     final Intent intent = new Intent(this, LoginActivity.class);
     startActivityForResult(intent, ActivityRequestCodes.LOGIN_FLOW);

@@ -37,11 +37,6 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindDrawable;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
 
 @RequiresActivityViewModel(InternalToolsViewModel.class)
@@ -51,25 +46,23 @@ public final class InternalToolsActivity extends BaseActivity<InternalToolsViewM
   @Inject CurrentUserType currentUser;
   @Inject Logout logout;
 
-  @Bind(R.id.build_date) TextView buildDate;
-  @Bind(R.id.sha) TextView sha;
-  @Bind(R.id.variant) TextView variant;
-  @Bind(R.id.version_code) TextView versionCode;
-  @Bind(R.id.version_name) TextView versionName;
-  @BindDrawable(android.R.drawable.ic_dialog_alert) Drawable icDialogAlertDrawable;
+  TextView buildDate;
+  TextView sha;
+  TextView variant;
+  TextView versionCode;
+  TextView versionName;
+  Drawable icDialogAlertDrawable;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.internal_tools_layout);
-    ButterKnife.bind(this);
 
     ((KSApplication) getApplicationContext()).component().inject(this);
 
     setupBuildInformationSection();
   }
 
-  @OnClick(R.id.push_notifications_button)
   public void pushNotificationsButtonClick() {
     final View view = View.inflate(this, R.layout.debug_push_notifications_layout, null);
 
@@ -79,27 +72,22 @@ public final class InternalToolsActivity extends BaseActivity<InternalToolsViewM
       .show();
   }
 
-  @OnClick(R.id.change_endpoint_custom_button)
   public void changeEndpointCustomButton() {
     showCustomEndpointDialog();
   }
 
-  @OnClick(R.id.change_endpoint_hivequeen_button)
   public void changeEndpointHivequeenButton() {
     showHivequeenEndpointDialog();
   }
 
-  @OnClick(R.id.change_endpoint_staging_button)
   public void changeEndpointStagingButton() {
     setEndpointAndRelaunch(ApiEndpoint.STAGING);
   }
 
-  @OnClick(R.id.change_endpoint_production_button)
   public void changeEndpointProductionButton() {
     setEndpointAndRelaunch(ApiEndpoint.PRODUCTION);
   }
 
-  @OnClick(R.id.submit_bug_report_button)
   public void submitBugReportButtonClick() {
     currentUser.observable().take(1).subscribe(this::submitBugReport);
   }
@@ -135,7 +123,7 @@ public final class InternalToolsActivity extends BaseActivity<InternalToolsViewM
 
   private void showCustomEndpointDialog() {
     final View view = View.inflate(this, R.layout.custom_endpoint_layout, null);
-    final EditText customEndpointEditText = ButterKnife.findById(view, R.id.custom_endpoint_edit_text);
+    final EditText customEndpointEditText = null;
 
     new AlertDialog.Builder(this)
       .setTitle("Change endpoint")
@@ -155,7 +143,7 @@ public final class InternalToolsActivity extends BaseActivity<InternalToolsViewM
 
   private void showHivequeenEndpointDialog() {
     final View view = View.inflate(this, R.layout.hivequeen_endpoint_layout, null);
-    final EditText hivequeenNameEditText = ButterKnife.findById(view, R.id.hivequeen_name_edit_text);
+    final EditText hivequeenNameEditText = null;
 
     new AlertDialog.Builder(this)
       .setTitle("Change endpoint")

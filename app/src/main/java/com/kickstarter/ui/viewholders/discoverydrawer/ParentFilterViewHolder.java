@@ -11,16 +11,12 @@ import com.kickstarter.ui.adapters.data.NavigationDrawerData;
 import com.kickstarter.ui.viewholders.KSViewHolder;
 import com.kickstarter.ui.views.IconButton;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import static com.kickstarter.libs.utils.ObjectUtils.requireNonNull;
 
 public final class ParentFilterViewHolder extends KSViewHolder {
-  protected @Bind(R.id.filter_text_view) TextView filterTextView;
-  protected @Bind(R.id.expand_button) IconButton expandButton;
-  protected @Bind(R.id.collapse_button) IconButton collapseButton;
+  protected TextView filterTextView;
+  protected IconButton expandButton;
+  protected IconButton collapseButton;
   private NavigationDrawerData.Section.Row item;
   private Delegate delegate;
 
@@ -31,7 +27,6 @@ public final class ParentFilterViewHolder extends KSViewHolder {
   public ParentFilterViewHolder(final @NonNull View view, final @NonNull Delegate delegate) {
     super(view);
     this.delegate = delegate;
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -54,7 +49,6 @@ public final class ParentFilterViewHolder extends KSViewHolder {
     }
   }
 
-  @OnClick(R.id.filter_text_view)
   protected void textViewClick() {
     delegate.parentFilterViewHolderRowClick(this, item);
   }

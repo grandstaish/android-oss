@@ -17,19 +17,15 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 public final class ProjectSearchResultViewHolder extends KSViewHolder {
   private Project project;
   private final Delegate delegate;
 
-  protected @Bind(R.id.creator_name_text_view) TextView creatorNameTextView;
-  protected @Bind(R.id.project_name_text_view) TextView projectNameTextView;
-  protected @Bind(R.id.project_image_view) ImageView projectImageView;
+  protected TextView creatorNameTextView;
+  protected TextView projectNameTextView;
+  protected ImageView projectImageView;
 
-  protected @BindString(R.string.search_by_creator) String byCreatorString;
+  protected String byCreatorString;
 
   protected @Inject KSString ksString;
 
@@ -42,7 +38,6 @@ public final class ProjectSearchResultViewHolder extends KSViewHolder {
     this.delegate = delegate;
 
     ((KSApplication) view.getContext().getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override

@@ -19,20 +19,15 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class ActivitySampleFriendFollowViewHolder extends KSViewHolder {
   @Inject KSString ksString;
 
-  protected @Bind(R.id.activity_image) ImageView activityImageView;
-  protected @Bind(R.id.activity_title) TextView activityTitleTextView;
-  protected @Bind(R.id.activity_subtitle) TextView activitySubtitleTextView;
-  protected @Bind(R.id.see_activity_button) Button seeActivityButton;
-  protected @BindString(R.string.activity_user_name_is_now_following_you) String categoryFollowingString;
-  protected @BindString(R.string.activity_follow_back) String categoryFollowBackString;
+  protected ImageView activityImageView;
+  protected TextView activityTitleTextView;
+  protected TextView activitySubtitleTextView;
+  protected Button seeActivityButton;
+  protected String categoryFollowingString;
+  protected String categoryFollowBackString;
 
   private Activity activity;
 
@@ -46,7 +41,6 @@ public class ActivitySampleFriendFollowViewHolder extends KSViewHolder {
     this.delegate = delegate;
 
     ((KSApplication) view.getContext().getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -72,7 +66,6 @@ public class ActivitySampleFriendFollowViewHolder extends KSViewHolder {
     }
   }
 
-  @OnClick(R.id.see_activity_button)
   protected void seeActivityOnClick() {
     delegate.activitySampleFriendFollowViewHolderSeeActivityClicked(this);
   }

@@ -7,9 +7,6 @@ import android.view.View;
 import com.kickstarter.R;
 import com.kickstarter.ui.viewholders.KSViewHolder;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public final class LoggedOutViewHolder extends KSViewHolder {
   private Delegate delegate;
 
@@ -20,7 +17,6 @@ public final class LoggedOutViewHolder extends KSViewHolder {
 
   public LoggedOutViewHolder(final @NonNull View view, final @NonNull Delegate delegate) {
     super(view);
-    ButterKnife.bind(this, view);
     this.delegate = delegate;
   }
 
@@ -32,12 +28,11 @@ public final class LoggedOutViewHolder extends KSViewHolder {
   public void onBind() {
   }
 
-  @Nullable @OnClick(R.id.internal_tools_icon_button)
+  @Nullable
   public void internalToolsClick() {
     delegate.loggedOutViewHolderInternalToolsClick(this);
   }
 
-  @OnClick(R.id.logged_out_container)
   public void loginToutClick() {
     delegate.loggedOutViewHolderLoginToutClick(this);
   }

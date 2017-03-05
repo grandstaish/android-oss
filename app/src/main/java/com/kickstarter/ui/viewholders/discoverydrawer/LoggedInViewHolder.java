@@ -13,18 +13,14 @@ import com.kickstarter.models.User;
 import com.kickstarter.ui.viewholders.KSViewHolder;
 import com.squareup.picasso.Picasso;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import static com.kickstarter.libs.utils.ObjectUtils.requireNonNull;
 
 public final class LoggedInViewHolder extends KSViewHolder {
   private Delegate delegate;
   private User user;
 
-  protected @Bind(R.id.user_image_view) ImageView userImageView;
-  protected @Bind(R.id.user_name_text_view) TextView userNameTextView;
+  protected ImageView userImageView;
+  protected TextView userNameTextView;
 
   public interface Delegate {
     void loggedInViewHolderInternalToolsClick(final @NonNull LoggedInViewHolder viewHolder);
@@ -35,8 +31,6 @@ public final class LoggedInViewHolder extends KSViewHolder {
   public LoggedInViewHolder(final @NonNull View view, final @NonNull Delegate delegate) {
     super(view);
     this.delegate = delegate;
-
-    ButterKnife.bind(this, view);
   }
 
   @Override
@@ -55,17 +49,15 @@ public final class LoggedInViewHolder extends KSViewHolder {
       .into(userImageView);
   }
 
-  @OnClick(R.id.user_container)
   public void userClick() {
     delegate.loggedInViewHolderProfileClick(this, user);
   }
 
-  @Nullable @OnClick(R.id.internal_tools_icon_button)
+  @Nullable
   public void internalToolsClick() {
     delegate.loggedInViewHolderInternalToolsClick(this);
   }
 
-  @OnClick(R.id.settings_icon_button)
   public void settingsClick() {
     delegate.loggedInViewHolderSettingsClick(this, user);
   }

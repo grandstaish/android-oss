@@ -19,13 +19,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import auto.parcel.AutoParcel;
-
 import static com.kickstarter.libs.utils.BooleanUtils.isFalse;
 import static com.kickstarter.libs.utils.BooleanUtils.isTrue;
 
 @AutoGson
-@AutoParcel
 public abstract class DiscoveryParams implements Parcelable {
   public abstract @Nullable Integer backed();
   public abstract @Nullable Category category();
@@ -239,7 +236,6 @@ public abstract class DiscoveryParams implements Parcelable {
     return builder.build();
   }
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder backed(Integer __);
     public abstract Builder category(Category __);
@@ -318,9 +314,7 @@ public abstract class DiscoveryParams implements Parcelable {
   }
 
   public static @NonNull Builder builder() {
-    return new AutoParcel_DiscoveryParams.Builder()
-      .page(1)
-      .perPage(15);
+    return null;
   }
 
   public abstract Builder toBuilder();

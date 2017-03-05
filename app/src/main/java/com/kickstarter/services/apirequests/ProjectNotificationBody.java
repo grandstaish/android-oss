@@ -4,15 +4,11 @@ import android.os.Parcelable;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class ProjectNotificationBody implements Parcelable {
   public abstract boolean email();
   public abstract boolean mobile();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder email(boolean __);
     public abstract Builder mobile(boolean __);
@@ -20,7 +16,7 @@ public abstract class ProjectNotificationBody implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_ProjectNotificationBody.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

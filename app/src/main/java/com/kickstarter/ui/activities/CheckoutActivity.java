@@ -57,11 +57,6 @@ import java.util.Arrays;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import okhttp3.Request;
 import rx.android.schedulers.AndroidSchedulers;
 
@@ -71,33 +66,33 @@ import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
 public final class CheckoutActivity extends BaseActivity<CheckoutViewModel> implements KSWebViewClient.Delegate {
   private @Nullable Project project;
 
-  protected @Bind(R.id.checkout_toolbar) KSToolbar checkoutToolbar;
-  protected @Bind(R.id.web_view) KSWebView webView;
-  protected @Bind(R.id.checkout_loading_indicator) View loadingIndicatorView;
-  protected @Bind(R.id.confirmation_group) View confirmationGroup;
-  protected @Bind(R.id.pledge_disclaimer) TextView pledgeDisclaimerTextView;
-  protected @Bind(R.id.terms_and_privacy) TextView termsAndPrivacyTextView;
-  protected @Bind(R.id.backer_101) TextView backer101TextView;
+  protected KSToolbar checkoutToolbar;
+  protected KSWebView webView;
+  protected View loadingIndicatorView;
+  protected View confirmationGroup;
+  protected TextView pledgeDisclaimerTextView;
+  protected TextView termsAndPrivacyTextView;
+  protected TextView backer101TextView;
 
   // Android pay summary bindings
-  protected @Bind(R.id.android_pay_instrument_description) TextView androidPayInstrumentDescriptionTextView;
-  protected @Bind(R.id.android_pay_email) TextView androidPayEmailTextView;
+  protected TextView androidPayInstrumentDescriptionTextView;
+  protected TextView androidPayEmailTextView;
 
   // Project context view bindings
-  protected @Bind(R.id.project_context_image_view) ImageView contextPhotoImageView;
-  protected @Bind(R.id.project_context_creator_name) TextView creatorNameTextView;
-  protected @Bind(R.id.project_context_project_name) TextView projectNameTextView;
+  protected ImageView contextPhotoImageView;
+  protected TextView creatorNameTextView;
+  protected TextView projectNameTextView;
 
-  protected @BindString(R.string.profile_settings_about_terms) String termsOfUseString;
-  protected @BindString(R.string.profile_settings_about_privacy) String privacyPolicyString;
-  protected @BindString(R.string.project_checkout_android_pay_pledge_disclaimer) String pledgeDisclaimerString;
-  protected @BindString(R.string.project_checkout_android_pay_terms_and_privacy) String termsAndPrivacyString;
-  protected @BindString(R.string.project_checkout_android_pay_backer_101) String backer101String;
-  protected @BindString(R.string.project_creator_by_creator) String projectCreatorByCreatorString;
-  protected @BindString(R.string.project_checkout_android_pay_error_title) String androidPayErrorTitleString;
-  protected @BindString(R.string.project_checkout_android_pay_error_message) String androidPayErrorMessageString;
+  protected String termsOfUseString;
+  protected String privacyPolicyString;
+  protected String pledgeDisclaimerString;
+  protected String termsAndPrivacyString;
+  protected String backer101String;
+  protected String projectCreatorByCreatorString;
+  protected String androidPayErrorTitleString;
+  protected String androidPayErrorMessageString;
 
-  protected @BindColor(R.color.white) int whiteColor;
+  protected int whiteColor;
 
   protected @Inject KSCurrency ksCurrency;
   protected @Inject KSString ksString;
@@ -114,7 +109,6 @@ public final class CheckoutActivity extends BaseActivity<CheckoutViewModel> impl
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.checkout_layout);
-    ButterKnife.bind(this);
 
     ((KSApplication) getApplication()).component().inject(this);
 
@@ -366,24 +360,20 @@ public final class CheckoutActivity extends BaseActivity<CheckoutViewModel> impl
     dialog.show();
   }
 
-  @OnClick(R.id.back_button)
   protected void toolbarBackButtonClicked() {
     viewModel.inputs.backButtonClicked();
   }
 
-  @OnClick(R.id.android_pay_confirmation_button)
   protected void androidPayConfirmationClicked() {
     viewModel.inputs.confirmAndroidPayClicked();
   }
 
-  @OnClick(R.id.android_pay_change)
   protected void androidPayChangeClicked() {
     if (confirmationWalletFragment != null) {
       AndroidPayUtils.triggerAndroidPaySheet(confirmationWalletFragment);
     }
   }
 
-  @OnClick(R.id.terms_and_privacy)
   protected void termsAndPrivacyClicked() {
     final CharSequence[] items = new CharSequence[] {
       termsOfUseString,
@@ -403,7 +393,6 @@ public final class CheckoutActivity extends BaseActivity<CheckoutViewModel> impl
       .show();
   }
 
-  @OnClick(R.id.backer_101)
   protected void backer101Clicked() {
     final Intent intent = new Intent(this, WebViewActivity.class);
     intent.putExtra(IntentKey.URL, Uri.parse(project.webProjectUrl())

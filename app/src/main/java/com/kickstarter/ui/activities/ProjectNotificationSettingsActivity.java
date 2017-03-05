@@ -13,24 +13,20 @@ import com.kickstarter.libs.utils.ViewUtils;
 import com.kickstarter.ui.adapters.ProjectNotificationSettingsAdapter;
 import com.kickstarter.viewmodels.ProjectNotificationSettingsViewModel;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
 
 @RequiresActivityViewModel(ProjectNotificationSettingsViewModel.class)
 public final class ProjectNotificationSettingsActivity extends BaseActivity<ProjectNotificationSettingsViewModel> {
-  protected @Bind(R.id.project_notification_settings_recycler_view) RecyclerView recyclerView;
+  protected RecyclerView recyclerView;
 
-  protected @BindString(R.string.general_error_something_wrong) String generalErrorString;
+  protected String generalErrorString;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.project_notification_settings_layout);
-    ButterKnife.bind(this);
 
     final ProjectNotificationSettingsAdapter adapter = new ProjectNotificationSettingsAdapter();
     recyclerView.setAdapter(adapter);

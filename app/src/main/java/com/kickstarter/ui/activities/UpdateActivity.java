@@ -27,10 +27,6 @@ import com.kickstarter.viewmodels.UpdateViewModel;
 
 import java.util.Arrays;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import okhttp3.Request;
 
 import static com.kickstarter.libs.rx.transformers.Transformers.observeForUI;
@@ -38,12 +34,12 @@ import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
 
 @RequiresActivityViewModel(UpdateViewModel.ViewModel.class)
 public class UpdateActivity extends BaseActivity<UpdateViewModel.ViewModel> implements KSWebViewClient.Delegate {
-  protected @Bind(R.id.update_web_view) KSWebView ksWebView;
-  protected @Bind(R.id.loading_indicator_view) View loadingIndicatorView;
-  protected @Bind(R.id.update_toolbar) KSToolbar toolbar;
+  protected KSWebView ksWebView;
+  protected View loadingIndicatorView;
+  protected KSToolbar toolbar;
 
-  protected @BindString(R.string.social_update_number) String updateNumberString;
-  protected @BindString(R.string.activity_project_update_update_count) String shareUpdateCountString;
+  protected String updateNumberString;
+  protected String shareUpdateCountString;
 
   private KSString ksString;
 
@@ -51,7 +47,6 @@ public class UpdateActivity extends BaseActivity<UpdateViewModel.ViewModel> impl
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.update_layout);
-    ButterKnife.bind(this);
 
     this.ksString = environment().ksString();
 
@@ -141,7 +136,6 @@ public class UpdateActivity extends BaseActivity<UpdateViewModel.ViewModel> impl
     return slideInFromLeft();
   }
 
-  @OnClick(R.id.share_icon_button)
   public void shareIconButtonPressed() {
     this.viewModel.inputs.shareIconButtonClicked();
   }

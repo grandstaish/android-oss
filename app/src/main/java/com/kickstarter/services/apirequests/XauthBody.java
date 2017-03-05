@@ -5,16 +5,12 @@ import android.support.annotation.Nullable;
 
 import com.kickstarter.libs.qualifiers.AutoGson;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class XauthBody implements Parcelable {
   public abstract String email();
   public abstract String password();
   public abstract @Nullable String code();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder email(String __);
     public abstract Builder password(String __);
@@ -23,7 +19,7 @@ public abstract class XauthBody implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_XauthBody.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();

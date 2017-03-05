@@ -21,22 +21,19 @@ import com.kickstarter.ui.toolbars.SearchToolbar;
 import com.kickstarter.ui.viewholders.ProjectSearchResultViewHolder;
 import com.kickstarter.viewmodels.SearchViewModel;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
 
 @RequiresActivityViewModel(SearchViewModel.class)
 public final class SearchActivity extends BaseActivity<SearchViewModel> implements SearchAdapter.Delegate {
   private SearchAdapter adapter;
   private RecyclerViewPaginator paginator;
-  protected @Bind(R.id.search_recycler_view) RecyclerView recyclerView;
-  protected @Bind(R.id.search_toolbar) SearchToolbar toolbar;
+  protected RecyclerView recyclerView;
+  protected SearchToolbar toolbar;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.search_layout);
-    ButterKnife.bind(this);
 
     adapter = new SearchAdapter(this);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));

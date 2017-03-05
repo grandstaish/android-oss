@@ -34,9 +34,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.kickstarter.libs.rx.transformers.Transformers.observeForUI;
@@ -52,26 +49,25 @@ public final class DiscoveryActivity extends BaseActivity<DiscoveryViewModel> {
   protected @Inject ApiClientType client;
   protected @Inject InternalToolsType internalTools;
 
-  protected @Bind(R.id.discovery_layout) DrawerLayout discoveryLayout;
-  protected @Bind(R.id.discovery_toolbar) DiscoveryToolbar discoveryToolbar;
-  protected @Bind(R.id.discovery_drawer_recycler_view) RecyclerView drawerRecyclerView;
-  protected @Bind(R.id.discovery_tab_layout) SortTabLayout sortTabLayout;
-  protected @Bind(R.id.discovery_view_pager) ViewPager sortViewPager;
-  protected @Bind(R.id.discovery_sort_app_bar_layout) AppBarLayout sortAppBarLayout;
+  protected DrawerLayout discoveryLayout;
+  protected DiscoveryToolbar discoveryToolbar;
+  protected RecyclerView drawerRecyclerView;
+  protected SortTabLayout sortTabLayout;
+  protected ViewPager sortViewPager;
+  protected AppBarLayout sortAppBarLayout;
 
-  protected @BindString(R.string.A_newer_build_is_available) String aNewerBuildIsAvailableString;
-  protected @BindString(R.string.Upgrade_app) String upgradeAppString;
-  protected @BindString(R.string.Home) String homeString;
-  protected @BindString(R.string.Popular) String popularString;
-  protected @BindString(R.string.discovery_sort_types_newest) String newestString;
-  protected @BindString(R.string.Ending_soon) String endingSoonString;
-  protected @BindString(R.string.discovery_sort_types_most_funded) String mostFundedString;
+  protected String aNewerBuildIsAvailableString;
+  protected String upgradeAppString;
+  protected String homeString;
+  protected String popularString;
+  protected String newestString;
+  protected String endingSoonString;
+  protected String mostFundedString;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.discovery_layout);
-    ButterKnife.bind(this);
 
     ((KSApplication) getApplication()).component().inject(this);
 

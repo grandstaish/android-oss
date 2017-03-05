@@ -6,19 +6,16 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import auto.parcel.AutoParcel;
 import rx.functions.Func2;
 
 public final class DiffUtils {
   private DiffUtils() {}
 
-  @AutoParcel
   public abstract static class Diff implements Parcelable {
     public abstract @NonNull List<Integer> insertions();
     public abstract @NonNull List<Integer> deletions();
     public abstract @NonNull List<Integer> updates();
 
-    @AutoParcel.Builder
     public abstract static class Builder {
       public abstract Builder insertions(List<Integer> __);
       public abstract Builder deletions(List<Integer> __);
@@ -27,10 +24,7 @@ public final class DiffUtils {
     }
 
     public static Builder builder() {
-      return new AutoParcel_DiffUtils_Diff.Builder()
-        .insertions(new ArrayList<>())
-        .deletions(new ArrayList<>())
-        .updates(new ArrayList<>());
+      return null;
     }
 
     public abstract Builder toBuilder();

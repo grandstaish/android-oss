@@ -16,31 +16,25 @@ import com.kickstarter.ui.IntentKey;
 import com.kickstarter.viewmodels.ResetPasswordViewModel;
 import com.kickstarter.ui.toolbars.LoginToolbar;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnTextChanged;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.kickstarter.libs.utils.TransitionUtils.slideInFromLeft;
 
 @RequiresActivityViewModel(ResetPasswordViewModel.class)
 public final class ResetPasswordActivity extends BaseActivity<ResetPasswordViewModel> {
-  @Bind (R.id.email) EditText email;
-  @Bind (R.id.reset_password_button) Button resetPasswordButton;
-  @Bind(R.id.login_toolbar) LoginToolbar loginToolbar;
+  EditText email;
+  Button resetPasswordButton;
+  LoginToolbar loginToolbar;
 
-  @BindString(R.string.forgot_password_title) String forgotPasswordString;
-  @BindString(R.string.forgot_password_error) String errorMessageString;
-  @BindString(R.string.general_error_oops) String errorTitleString;
+  String forgotPasswordString;
+  String errorMessageString;
+  String errorTitleString;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.reset_password_layout);
-    ButterKnife.bind(this);
     loginToolbar.setTitle(forgotPasswordString);
 
     viewModel.outputs.resetSuccess()
@@ -64,12 +58,10 @@ public final class ResetPasswordActivity extends BaseActivity<ResetPasswordViewM
       .subscribe(__ -> ViewUtils.showDialog(this, errorTitleString, errorMessageString));
   }
 
-  @OnTextChanged(R.id.email)
   void onEmailTextChanged(final @NonNull CharSequence email) {
     viewModel.inputs.email(email.toString());
   }
 
-  @OnClick(R.id.reset_password_button)
   public void resetButtonOnClick() {
     viewModel.inputs.resetPasswordClick();
   }

@@ -9,12 +9,8 @@ import android.widget.TextView;
 import com.kickstarter.R;
 import com.kickstarter.ui.views.LoginPopupMenu;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class LoginToolbar extends KSToolbar {
-  @Bind(R.id.help_button) TextView helpButton;
+  TextView helpButton;
 
   public LoginToolbar(final @NonNull Context context) {
     super(context);
@@ -31,10 +27,8 @@ public class LoginToolbar extends KSToolbar {
   @Override
   protected void onFinishInflate() {
     super.onFinishInflate();
-    ButterKnife.bind(this);
   }
 
-  @OnClick(R.id.help_button)
   protected void helpButtonClick() {
     new LoginPopupMenu(getContext(), helpButton).show();
   }

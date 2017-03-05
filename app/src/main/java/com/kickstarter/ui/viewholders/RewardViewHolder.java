@@ -25,11 +25,6 @@ import com.kickstarter.ui.activities.ViewPledgeActivity;
 import com.kickstarter.ui.adapters.RewardsItemAdapter;
 import com.kickstarter.viewmodels.RewardViewModel;
 
-import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 import static com.kickstarter.libs.rx.transformers.Transformers.observeForUI;
 import static com.kickstarter.libs.utils.ObjectUtils.requireNonNull;
 import static com.kickstarter.libs.utils.TransitionUtils.slideInFromRight;
@@ -38,31 +33,31 @@ import static com.kickstarter.libs.utils.TransitionUtils.transition;
 public final class RewardViewHolder extends KSViewHolder {
   private final RewardViewModel viewModel;
 
-  protected @Bind(R.id.reward_all_gone_text_view) TextView allGoneTextView;
-  protected @Bind(R.id.reward_backers_text_view) TextView backersTextView;
-  protected @Bind(R.id.reward_description_text_view) TextView descriptionTextView;
-  protected @Bind(R.id.reward_estimated_delivery_date_section) View estimatedDeliveryDateSection;
-  protected @Bind(R.id.reward_estimated_delivery_date_text_view) TextView estimatedDeliveryDateTextView;
-  protected @Bind(R.id.reward_limit_and_backers_separator_text_view) TextView limitAndBackersSeparatorTextView;
-  protected @Bind(R.id.reward_limit_and_remaining_text_view) TextView limitAndRemainingTextView;
-  protected @Bind(R.id.reward_minimum_text_view) TextView minimumTextView;
-  protected @Bind(R.id.reward_rewards_item_recycler_view) RecyclerView rewardsItemRecyclerView;
-  protected @Bind(R.id.reward_rewards_item_section) View rewardsItemSection;
-  protected @Bind(R.id.reward_selected_header) View selectedHeader;
-  protected @Bind(R.id.reward_shipping_section) View shippingSection;
-  protected @Bind(R.id.reward_shipping_summary_text_view) TextView shippingSummaryTextView;
-  protected @Bind(R.id.reward_title_text_view) TextView titleTextView;
-  protected @Bind(R.id.reward_view) CardView rewardView;
-  protected @Bind(R.id.reward_usd_conversion_text_view) TextView usdConversionTextView;
-  protected @Bind(R.id.reward_white_overlay_view) View whiteOverlayView;
+  protected TextView allGoneTextView;
+  protected TextView backersTextView;
+  protected TextView descriptionTextView;
+  protected View estimatedDeliveryDateSection;
+  protected TextView estimatedDeliveryDateTextView;
+  protected TextView limitAndBackersSeparatorTextView;
+  protected TextView limitAndRemainingTextView;
+  protected TextView minimumTextView;
+  protected RecyclerView rewardsItemRecyclerView;
+  protected View rewardsItemSection;
+  protected View selectedHeader;
+  protected View shippingSection;
+  protected TextView shippingSummaryTextView;
+  protected TextView titleTextView;
+  protected CardView rewardView;
+  protected TextView usdConversionTextView;
+  protected View whiteOverlayView;
 
-  protected @BindColor(R.color.light_green) int lightGreenColor;
-  protected @BindColor(R.color.white) int whiteColor;
+  protected int lightGreenColor;
+  protected int whiteColor;
 
-  protected @BindString(R.string.rewards_info_limited_rewards_remaining_left_of_reward_limit) String limitedRewardsRemainingString;
-  protected @BindString(R.string.rewards_title_pledge_reward_currency_or_more) String pledgeRewardCurrencyOrMoreString;
-  protected @BindString(R.string.project_back_button) String projectBackButtonString;
-  protected @BindString(R.string.rewards_title_about_amount_usd) String usdConversionString;
+  protected String limitedRewardsRemainingString;
+  protected String pledgeRewardCurrencyOrMoreString;
+  protected String projectBackButtonString;
+  protected String usdConversionString;
 
   private final KSString ksString;
 
@@ -72,7 +67,6 @@ public final class RewardViewHolder extends KSViewHolder {
     ksString = environment().ksString();
     viewModel = new RewardViewModel(environment());
 
-    ButterKnife.bind(this, view);
     final RewardsItemAdapter rewardsItemAdapter = new RewardsItemAdapter();
     rewardsItemRecyclerView.setAdapter(rewardsItemAdapter);
     final LinearLayoutManager layoutManager = new LinearLayoutManager(context());

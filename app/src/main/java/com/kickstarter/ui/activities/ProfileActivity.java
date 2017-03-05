@@ -29,8 +29,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.kickstarter.libs.utils.IntegerUtils.isNonZero;
@@ -40,20 +38,19 @@ public final class ProfileActivity extends BaseActivity<ProfileViewModel> {
   private ProfileAdapter adapter;
   private RecyclerViewPaginator paginator;
 
-  protected @Bind(R.id.avatar) ImageView avatarImageView;
-  protected @Bind(R.id.user_name) TextView userNameTextView;
-  protected @Bind(R.id.created_num) TextView createdNumTextView;
-  protected @Bind(R.id.backed_num) TextView backedNumTextView;
-  protected @Bind(R.id.created) TextView createdTextView;
-  protected @Bind(R.id.backed) TextView backedTextView;
-  protected @Bind(R.id.divider) View dividerView;
-  protected @Bind(R.id.recycler_view) RecyclerView recyclerView;
+  protected ImageView avatarImageView;
+  protected TextView userNameTextView;
+  protected TextView createdNumTextView;
+  protected TextView backedNumTextView;
+  protected TextView createdTextView;
+  protected TextView backedTextView;
+  protected View dividerView;
+  protected RecyclerView recyclerView;
 
   @Override
   protected void onCreate(final @Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.profile_layout);
-    ButterKnife.bind(this);
 
     adapter = new ProfileAdapter(viewModel);
     final int spanCount = ViewUtils.isLandscape(this) ? 3 : 2;

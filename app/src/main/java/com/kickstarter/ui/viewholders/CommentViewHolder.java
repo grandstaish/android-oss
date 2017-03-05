@@ -22,24 +22,20 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.ButterKnife;
-
 import static com.kickstarter.libs.utils.ObjectUtils.requireNonNull;
 
 public final class CommentViewHolder extends KSViewHolder {
   private Project project;
   private Comment comment;
-  public @Bind(R.id.avatar) ImageView avatarImageView;
-  public @Bind(R.id.creator_label) TextView creatorLabelTextView;
-  public @Bind(R.id.user_label) TextView userLabelTextView;
-  public @Bind(R.id.name) TextView nameTextView;
-  public @Bind(R.id.post_date) TextView postDateTextView;
-  public @Bind(R.id.comment_body) TextView commentBodyTextView;
+  public ImageView avatarImageView;
+  public TextView creatorLabelTextView;
+  public TextView userLabelTextView;
+  public TextView nameTextView;
+  public TextView postDateTextView;
+  public TextView commentBodyTextView;
 
-  public @BindColor(R.color.text_secondary) int textSecondaryColor;
-  public @BindColor(R.color.text_primary) int textPrimaryColor;
+  public int textSecondaryColor;
+  public int textPrimaryColor;
 
   protected @Inject CurrentUserType currentUser;
   protected @Inject KSString ksString;
@@ -47,7 +43,6 @@ public final class CommentViewHolder extends KSViewHolder {
   public CommentViewHolder(final @NonNull View view) {
     super(view);
     ((KSApplication) view.getContext().getApplicationContext()).component().inject(this);
-    ButterKnife.bind(this, view);
   }
 
   @Override

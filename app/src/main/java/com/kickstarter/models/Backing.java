@@ -11,10 +11,7 @@ import org.joda.time.DateTime;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import auto.parcel.AutoParcel;
-
 @AutoGson
-@AutoParcel
 public abstract class Backing implements Parcelable {
   public abstract float amount();
   public abstract @Nullable User backer();
@@ -32,7 +29,6 @@ public abstract class Backing implements Parcelable {
   public abstract float shippingAmount();
   public abstract @Status String status();
 
-  @AutoParcel.Builder
   public abstract static class Builder {
     public abstract Builder amount(float __);
     public abstract Builder backer(User __);
@@ -53,7 +49,7 @@ public abstract class Backing implements Parcelable {
   }
 
   public static Builder builder() {
-    return new AutoParcel_Backing.Builder();
+    return null;
   }
 
   public abstract Builder toBuilder();
