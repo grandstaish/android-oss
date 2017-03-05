@@ -84,6 +84,7 @@ android {
             // https://developer.android.com/tools/building/multidex.html#dev-build
             dimension "API"
             minSdkVersion 21
+            resConfigs "en", "xxhdpi"
         }
         internal {
             dimension "AUDIENCE"
@@ -104,9 +105,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Fixes build error hitting GC overhead limit
     dexOptions {
+        // Fixes build error hitting GC overhead limit
         javaMaxHeapSize "2560M"
+        preDexLibraries true
     }
 
     lintOptions {
@@ -117,6 +119,10 @@ android {
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
         exclude 'LICENSE.txt'
+    }
+
+    aaptOptions {
+        cruncherEnabled false
     }
 
     sourceSets {
