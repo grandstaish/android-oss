@@ -31,8 +31,10 @@ android {
         targetSdkVersion 25
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
-        buildConfigField "String", "BUILD_DATE", "\"${buildDate}\""
+        buildConfigField "String", "GIT_SHA", "\"123\""
+        buildConfigField "String", "BUILD_DATE", "\"456\""
+        // buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
+        // buildConfigField "String", "BUILD_DATE", "\"${buildDate}\""
 
         // Enable Multidex to support over 65K methods
         multiDexEnabled true
